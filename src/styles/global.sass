@@ -1,0 +1,61 @@
+// body[data-theme="light"]
+//   --main-color: #F4F5F7
+//   --second-color: #FFFFFF
+//   --accent-color: #237688
+//   --accent-color-hover: #0890a8
+
+// body[data-theme="dark"]
+//   --main-color: #18181b
+//   --second-color: #27272a
+//   --accent-color: #06b6d4
+//   --accent-color-hover: #0890a8
+  
+  
+:root 
+  --main-color: #18181b
+  --second-color: #27272a
+  --accent-color: #06b6d4
+  --accent-color-hover: #0890a8
+
+  --shadow: 0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1)
+
+  --transition: 500ms ease
+
+  --rounded: 10px
+  --rounded-full: 999px
+
+  --unit: 4.166666666666667vw
+  
+
+
+
+.container 
+  margin-right: auto
+  margin-left: auto
+  padding-left: var(--unit)
+  padding-right: var(--unit)
+
+body
+  color: #fff
+  background: var(--second-color)
+
+html
+  scrollbar-width: thin
+  scrollbar-color: #141416 #1e1e20
+  &::-webkit-scrollbar
+    width: 10px
+
+.badRating 
+  background: #ef4444
+
+
+.normalRating 
+  background: #eab308
+
+
+.goodRating 
+  background: #22c55e
+
+
+.defaultRating 
+  background: #6b7280

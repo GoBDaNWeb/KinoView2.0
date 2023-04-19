@@ -1,0 +1,21 @@
+.button
+    cursor: pointer
+    padding: 10px 20px
+    border-radius: var(--rounded)
+    background: var(--accent-color)
+    border: none
+    color: #fff
+    transition: all var(--transition)
+    font-size: 1.2rem
+    display: flex
+    align-items: center
+    justify-content: center
+    gap: 15px
+    &:hover
+        background: var(--accent-color-hover)
+        transform: scale(1.05)
+    &:disabled
+        pointer-events: none
+        opacity: .5
+    &:active
+        transform: scale(0.95)
