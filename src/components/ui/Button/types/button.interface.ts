@@ -1,5 +1,7 @@
+import { CSSProperties } from "react";
+
 export interface IButtonProps {
   isDisabled?: boolean;
-  func?: any;
-  style?: any;
+  func: () => void;
+  customStyles?: CSSProperties;
 }

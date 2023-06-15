@@ -1,6 +1,19 @@
 .logo 
     display: flex
     align-items: center
+    position: relative
+    &::after
+        content: ''
+        position: absolute
+        height: 3px
+        width: 0
+        background: #fff
+        bottom: .1rem
+        left: 1.5rem
+        transition: var(--transition)
+    &:hover
+        &::after
+            width: 86%
     .logoText
         font-size: 1.8rem
         font-weight: 700
@@ -8,5 +21,7 @@
         span
             color: var(--accent-color)
     .logoIcon
+        margin-top: .4rem
         color: #fff
         font-size: 1.8rem
+   

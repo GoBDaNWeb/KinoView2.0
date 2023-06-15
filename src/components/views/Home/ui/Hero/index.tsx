@@ -12,7 +12,7 @@ const Hero = () => {
       <div className={styles.heroContent}>
         <h1>Вселенная кино безгранична</h1>
         <h4>Найди Кино или Сериал для просмотра</h4>
-        {/* <Search /> */}
+        <Search />
       </div>
     </div>
   );

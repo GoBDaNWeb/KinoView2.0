@@ -5,7 +5,7 @@ import MovieTabContent from "../MovieTabContent";
 import styles from "./styles.module.sass";
 import MovieContent from "../MovieContent";
 
-const Movie: FC<IMovieProps> = ({ movieData }) => {
+const Movie: FC<IMovieProps> = ({ movieData, isLoading }) => {
   const backdropImg = movieData?.backdrop?.url;
 
   return (
@@ -24,7 +24,7 @@ const Movie: FC<IMovieProps> = ({ movieData }) => {
           <div className={styles.movieBgBackdrop}></div>
         </div>
       ) : null}
-      <MovieInfo movieData={movieData} />
+      <MovieInfo movieData={movieData} isLoading={isLoading} />
       <MovieContent />
     </div>
   );

@@ -6,16 +6,20 @@ import ReviewItem from "../ReviewItem";
 import styles from "./styles.module.sass";
 
 const MovieReviews = () => {
-  const [limit, setLimit] = useState(3);
+  const [limit, setLimit] = useState<number>(3);
 
   const {
     query: { id },
   } = useRouter();
+
   const { data: reviews, isFetching } = useGetReviewsQuery({ id, limit });
+
   const onLoadMoreReviews = () => {
     setLimit((prev) => prev + 3);
   };
-  console.log("asd");
+
+  const reviewsCondition =
+    reviews && reviews.docs.length > 0 && reviews.docs.length < reviews.total;
 
   return (
     <div className={styles.reviews}>
@@ -23,18 +27,20 @@ const MovieReviews = () => {
       <div className={styles.reviewsList}>
         {reviews && reviews.docs?.length > 0 ? (
           <>
-            {reviews?.docs.map((review: any) => (
+            {reviews?.docs.map((review) => (
               <ReviewItem key={review.id} review={review} />
             ))}
           </>
         ) : (
           <div className={styles.empty}>Рецензий пока что нет</div>
         )}
-        {reviews && reviews.docs?.length > 0 && (
-          <Button func={onLoadMoreReviews}>
-            {isFetching ? "Загрузка..." : "Показать еще"}
-          </Button>
-        )}
+        <div className={styles.buttons}>
+          {reviewsCondition && (
+            <Button func={onLoadMoreReviews}>
+              {isFetching ? "Загрузка..." : "Показать еще"}
+            </Button>
+          )}
+        </div>
       </div>
     </div>
   );

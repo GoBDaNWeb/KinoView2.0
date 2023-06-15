@@ -6,11 +6,11 @@ const Button: FC<PropsWithChildren<IButtonProps>> = ({
   children,
   isDisabled,
   func,
-  style,
+  customStyles,
 }) => {
   return (
     <button
-      style={style}
+      style={{ ...customStyles }}
       className={styles.button}
       onClick={() => func()}
       disabled={isDisabled}

@@ -27,14 +27,16 @@ const NewAnime = () => {
     }
   };
   return (
-    <MovieList
-      type="anime"
-      isLoading={animeIsLoading}
-      isFetching={animeIsFetching}
-      movieList={anime?.docs}
-      changeMovieLimit={changeAnimeLimit}
-      title="Новинки мира аниме"
-    />
+    <section className="container">
+      <MovieList
+        type="anime"
+        isLoading={animeIsLoading}
+        isFetching={animeIsFetching}
+        movieList={anime?.docs}
+        changeMovieLimit={changeAnimeLimit}
+        title="Новинки мира аниме"
+      />
+    </section>
   );
 };
 

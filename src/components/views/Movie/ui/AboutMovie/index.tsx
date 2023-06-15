@@ -1,12 +1,80 @@
-import { FC } from "react";
+import { FC, Fragment } from "react";
 import { IAboutMovieProps } from "../../types/movie.interface";
 import { convertFees } from "../../helpers/convertFees";
 import { convertMovieType } from "../../helpers/converMovieType";
 import { Skeleton } from "@/components/ui/Skeleton";
 import styles from "./styles.module.sass";
+import { InfoBlock } from "@/components/common/InfoBlock";
+import moment from "moment";
 
 const AboutMovie: FC<IAboutMovieProps> = ({ aboutMovieData }) => {
-  const { year, countries, genres, slogan, fees, type } = aboutMovieData;
+  const {
+    year,
+    countries,
+    genres,
+    slogan,
+    fees,
+    type,
+    premiere,
+    movieLength,
+    budget,
+  } = aboutMovieData;
+  console.log("aboutMovieData", aboutMovieData);
+
+  const info = [
+    { title: "Год производства", content: <>{year ? year : "-"}</> },
+    {
+      title: "Страна",
+      content: (
+        <>
+          {countries
+            ? countries.map((country, index: number) => (
+                <Fragment key={country.name}>
+                  {index ? ", " : ""}
+                  {country.name}
+                </Fragment>
+              ))
+            : "-"}
+        </>
+      ),
+    },
+
+    {
+      title: "Жанр",
+      content: (
+        <>
+          {genres
+            ? genres.map((genre, index: number) => (
+                <Fragment key={genre.name}>
+                  {index ? ", " : ""}
+                  {genre.name}
+                </Fragment>
+              ))
+            : "-"}
+        </>
+      ),
+    },
+    {
+      title: "Слоган",
+      content: <>{slogan ? slogan : "-"}</>,
+    },
+    {
+      title: "Бюджет",
+      content: <>{budget?.value ? `$${convertFees(budget.value)}` : "-"}</>,
+    },
+    {
+      title: "Время",
+      content: <>{movieLength ? `${movieLength} мин` : "-"} </>,
+    },
+    {
+      title: "Сборы в мире",
+      content: <>{fees?.value ? `$${convertFees(fees.value)}` : "-"}</>,
+    },
+    {
+      title: "Премьера в мире",
+      content: <>{moment(premiere?.world).format("DD.MM.YYYY")}</>,
+    },
+  ];
 
   return (
     <>
@@ -17,50 +85,7 @@ const AboutMovie: FC<IAboutMovieProps> = ({ aboutMovieData }) => {
           <>О {convertMovieType(type)}</>
         )}{" "}
       </h4>
-      <ul className={styles.movieAboutList}>
-        <li>
-          <h5>Год производства</h5>
-          <span>{year ? year : "-"}</span>
-        </li>
-        <li>
-          <h5>Страна</h5>
-          <span>
-            {countries
-              ? countries.map((country: any, index: number) => (
-                  <span key={country}>
-                    {index ? ", " : ""}
-                    {country.name}
-                  </span>
-                ))
-              : "-"}
-          </span>
-        </li>
-        <li>
-          <h5>Жанр</h5>
-          <span>
-            {genres
-              ? genres.map((genre: any, index: number) => (
-                  <span key={genre.name}>
-                    {index ? ", " : ""}
-                    {genre.name}
-                  </span>
-                ))
-              : "-"}
-          </span>
-        </li>
-        <li>
-          <h5>Слоган</h5>
-          <span>{slogan ? slogan : "-"}</span>
-        </li>
-        <li>
-          <h5>Сборы в мире</h5>
-          <span>{fees?.value ? `$${convertFees(fees.value)}` : "-"}</span>
-        </li>
-        <li>
-          <h5>Премьера в мире</h5>
-          <span>-</span>
-        </li>
-      </ul>
+      <InfoBlock infoContent={info} />
     </>
   );
 };

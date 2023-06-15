@@ -16,7 +16,6 @@ const NewFilms = () => {
     isLoading: filmsIsLoading,
     isFetching: filmsIsFetching,
   } = useGetNewFilmsQuery(filmsLimit);
-  console.log(films);
 
   const changeFilmsLimit = (type: string) => {
     if (type === "load") {
@@ -28,15 +27,19 @@ const NewFilms = () => {
     }
   };
 
+  console.log(films);
+
   return (
-    <MovieList
-      type="films"
-      isLoading={filmsIsLoading}
-      isFetching={filmsIsFetching}
-      movieList={films?.docs}
-      changeMovieLimit={changeFilmsLimit}
-      title="Новинки мира кино"
-    />
+    <section className="container">
+      <MovieList
+        type="films"
+        isLoading={filmsIsLoading}
+        isFetching={filmsIsFetching}
+        movieList={films?.docs}
+        changeMovieLimit={changeFilmsLimit}
+        title="Новинки мира кино"
+      />
+    </section>
   );
 };
 

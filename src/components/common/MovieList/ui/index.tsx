@@ -1,5 +1,5 @@
-import { FC, useRef } from "react";
-import { IMovieListProps } from "../../../views/Home/types/home.interface";
+import { FC, ReactNode, useRef } from "react";
+import { IMovieListProps } from "../types/movieList.interface";
 import { MovieCard } from "@/components/common/MovieCard";
 import { Skeleton } from "@/components/ui/Skeleton";
 import { Button } from "@/components/ui/Button";
@@ -42,8 +42,8 @@ const MovieList: FC<IMovieListProps> = ({
           </>
         ) : (
           <>
-            {movieList.map((item: any, index: number) => (
-              <MovieCard movie={item} key={index} />
+            {movieList.map((item, index: number) => (
+              <MovieCard movie={item} key={item.id} />
             ))}
           </>
         )}
@@ -56,7 +56,7 @@ const MovieList: FC<IMovieListProps> = ({
           {isFetching ? "Загрузка..." : "Показать еще"}
         </Button>
         <Button
-          style={{ opacity: `${movieList?.length === 10 ? 0 : 1}` }}
+          customStyles={{ opacity: `${movieList?.length === 10 ? 0 : 1}` }}
           isDisabled={movieList?.length === 10}
           func={() => clickResetMovies()}
         >

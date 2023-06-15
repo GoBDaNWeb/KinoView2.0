@@ -1,7 +1,7 @@
 export enum Routes {
   Home = "/",
-  Films = "/films",
-  Serials = "/serials",
-  Cartoons = "/cartoons",
-  Anime = "/anime",
+  Films = "/movies/films",
+  Serials = "/movies/serials",
+  Cartoons = "/movies/cartoons",
+  Anime = "/movies/anime",
 }

@@ -1,11 +1,12 @@
-import { useRouter } from "next/router";
 import { FC, useState } from "react";
-import { useGetReviewsQuery } from "@/api";
 import { IReviewItemProps } from "../../types/movie.interface";
 import styles from "./styles.module.sass";
+import { convertDate } from "../../helpers/convertDate";
+import { Button } from "@/components/ui/Button";
 
 const Reviews: FC<IReviewItemProps> = ({ review }) => {
-  const [isFullReview, setIsFullReview] = useState<boolean>(false);
+  const { date } = review;
+
   const [isTruncated, setIsTruncated] = useState<boolean>(true);
 
   const reviewcondition =
@@ -25,7 +26,12 @@ const Reviews: FC<IReviewItemProps> = ({ review }) => {
         ></p>
       </div>
 
-      <div className={styles.reviewBottom}></div>
+      <div className={styles.reviewBottom}>
+        <span className={styles.date}>{convertDate(date, "D MMMM YYYY")}</span>
+        <Button func={() => setIsTruncated((prev) => !prev)}>
+          {isTruncated ? "показать полностью" : "скрыть"}
+        </Button>
+      </div>
     </div>
   );
 };

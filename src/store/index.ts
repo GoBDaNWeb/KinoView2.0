@@ -6,6 +6,8 @@ import serialsReducer from "./slices/serialsSlice";
 import cartoonsReducer from "./slices/cartoonsSlice";
 import animeReducer from "./slices/animeSlice";
 import searchMovieReducer from "./slices/searchSlice";
+import filtersReducer from "./slices/filterSlice";
+import paginationReducer from "./slices/paginationSlice";
 
 export const store = () =>
   configureStore({
@@ -14,7 +16,9 @@ export const store = () =>
       serials: serialsReducer,
       cartoons: cartoonsReducer,
       anime: animeReducer,
-      seachMovie: searchMovieReducer,
+      searchMovie: searchMovieReducer,
+      filters: filtersReducer,
+      pagination: paginationReducer,
       [movieApi.reducerPath]: movieApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>

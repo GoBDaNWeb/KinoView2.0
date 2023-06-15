@@ -1,1 +1,1 @@
-export { default as Carouser } from "./ui";
+export { default as Carousel } from "./ui";

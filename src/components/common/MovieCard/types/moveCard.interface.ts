@@ -1,3 +1,5 @@
-export interface IMoviecardProps {
-  movie: any;
+import { IMovie } from "@/shared/types/movie.interface";
+
+export interface IMovieCardProps {
+  movie: IMovie;
 }

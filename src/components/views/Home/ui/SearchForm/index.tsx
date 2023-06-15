@@ -1,8 +1,6 @@
-// * react/next
 import React, { useEffect, useCallback } from "react";
 import { Controller, useForm } from "react-hook-form";
 
-// * redux
 import { useDispatch } from "react-redux";
 import {
   setSearchValue,

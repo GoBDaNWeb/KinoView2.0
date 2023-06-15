@@ -5,6 +5,7 @@ import { Movie } from "@/components/views/Movie";
 import { Header } from "@/components/layout/Header";
 import { store, wrapper } from "@/store";
 import { getRunningQueriesThunk } from "@/api";
+import { Footer } from "@/components/layout/Footer";
 
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) => async () => {
@@ -21,7 +22,7 @@ const MoviePage = () => {
     query: { id },
   } = useRouter();
 
-  const { data: movie } = useGetMovieByIdQuery(id);
+  const { data: movie, isLoading } = useGetMovieByIdQuery(id);
 
   return (
     <>
@@ -32,7 +33,8 @@ const MoviePage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <Movie movieData={movie} />
+      <Movie movieData={movie} isLoading={isLoading} />
+      <Footer />
     </>
   );
 };

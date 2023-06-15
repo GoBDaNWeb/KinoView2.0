@@ -7,7 +7,7 @@ const Tabs: FC<ITabsProps> = ({ tabs }) => {
   return (
     <ReactTabs selectedTabClassName={styles.selected} className={styles.tabs}>
       <TabList className={styles.tabList}>
-        {tabs.map((tab: any) => (
+        {tabs.map((tab) => (
           <>
             {tab.condition ? (
               <Tab key={tab.title} className={styles.tabTitle}>
@@ -17,7 +17,7 @@ const Tabs: FC<ITabsProps> = ({ tabs }) => {
           </>
         ))}
       </TabList>
-      {tabs.map((tab: any) => (
+      {tabs.map((tab) => (
         <>
           {tab.condition ? (
             <TabPanel key={tab.title}>{tab.content}</TabPanel>

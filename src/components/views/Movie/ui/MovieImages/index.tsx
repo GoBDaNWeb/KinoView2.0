@@ -41,9 +41,7 @@ const MovieImages = () => {
           </>
         ) : (
           <>
-            {movieImages?.docs.map((image: any, index: number) => {
-              console.log(image);
-
+            {movieImages?.docs.map((image, index: number) => {
               return (
                 <a className={styles.imageWrapper} key={index} href={image.url}>
                   <Image

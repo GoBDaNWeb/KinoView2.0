@@ -1,28 +1,41 @@
 import { useSelector } from "react-redux";
+import { RootState } from "@/store";
+import { useDispatch } from "react-redux";
+import { handleHiddenSearchedMovies } from "@/store/slices/searchSlice";
 import { useGetMoviesBySearchQuery } from "@/api";
 
-import { Loader } from "@/components/ui/Loader";
 import styles from "./styles.module.sass";
 
-// * components
+import { Loader } from "@/components/ui/Loader";
 import SearchMovieCard from "../SearchMovieCard";
 
 const SearchDropDown = () => {
+  const dispatch = useDispatch();
+
   const { searchValue, searchType, hiddenSearchedMovies } = useSelector(
-    (state: any) => state.searchMovie
+    (state: RootState) => state.searchMovie
   );
-  // @ts-ignore
+
+  const handleVisibleSearchList = (boolean: boolean) => {
+    dispatch(handleHiddenSearchedMovies(boolean));
+  };
+
   const { isFetching, data } = useGetMoviesBySearchQuery({
     query: searchValue,
     type: searchType,
   });
-  const classcondition =
+
+  const classСondition =
     searchValue?.length > 0 && hiddenSearchedMovies
       ? `${styles.visible} ${styles.dropdown}`
       : `${styles.hidden} ${styles.dropdown}`;
 
   return (
-    <div className={classcondition}>
+    <div
+      onBlur={() => handleVisibleSearchList(false)}
+      onFocus={() => handleVisibleSearchList(true)}
+      className={classСondition}
+    >
       {isFetching ? (
         <div className={styles.loading}>
           <Loader />

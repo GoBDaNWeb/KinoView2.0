@@ -30,14 +30,16 @@ const NewSerials = () => {
   };
 
   return (
-    <MovieList
-      type="serials"
-      isLoading={serialsIsLoading}
-      isFetching={serialsIsFetching}
-      movieList={serials?.docs}
-      changeMovieLimit={changeSerialsLimit}
-      title="Новинки мира сериалов"
-    />
+    <section className="container">
+      <MovieList
+        type="serials"
+        isLoading={serialsIsLoading}
+        isFetching={serialsIsFetching}
+        movieList={serials?.docs}
+        changeMovieLimit={changeSerialsLimit}
+        title="Новинки мира сериалов"
+      />
+    </section>
   );
 };
 

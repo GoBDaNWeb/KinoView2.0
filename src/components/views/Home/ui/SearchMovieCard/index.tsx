@@ -1,31 +1,30 @@
-// * react/next
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { IMovieCardProps } from "@/shared/types/movie";
-
-// * helpers
+import { ISearchMovieCard } from "../../types/serchMovieCard.interface";
 import cropText from "../../helpers/cropText";
 import { translateMovieType } from "@/shared/helpers/translateMovieType";
 import { ratingColor } from "@/shared/helpers/ratingColor";
+import { convertRating } from "@/shared/helpers/convertRating";
 
-// * styles
 import styles from "./styles.module.sass";
 
-const SearchMovieCard: React.FC<IMovieCardProps> = ({ movie }) => {
+const SearchMovieCard: React.FC<ISearchMovieCard> = ({ movie }) => {
   return (
     <Link href={`/movie/${movie.id}`}>
       <div className={styles.card}>
         <div className={styles.imgWrapper}>
           <Image
-            src={movie.poster.url}
+            src={
+              movie?.poster?.url ? movie?.poster?.url : "/image-not-found.jpg"
+            }
             alt="movie poster"
             className={styles.image}
             layout="fill"
             unoptimized
           />
           <div className={`${styles.rating} ${ratingColor(movie.rating.kp)}`}>
-            {movie.rating.kp}
+            {convertRating(movie.rating.kp)}
           </div>
         </div>
         <div className={styles.content}>

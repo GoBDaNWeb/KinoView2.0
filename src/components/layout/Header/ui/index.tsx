@@ -45,6 +45,7 @@ const Header = () => {
       router.push("/");
     }
   };
+  console.log(router.query.slug);
 
   return (
     <header className={`${styles.header} container`}>
@@ -54,13 +55,18 @@ const Header = () => {
       <nav className={styles.headerNav}>
         <ul className={styles.headerNavList}>
           {urlList.map((url) => (
-            <li key={url.id}>
+            <li
+              className={
+                router.query.slug?.includes(url.id) ? `${styles.active}` : ""
+              }
+              key={url.id}
+            >
               <Link href={url.url}>{url.label}</Link>
             </li>
           ))}
         </ul>
       </nav>
-      <Button>Войти</Button>
+      {/* <Button>Войти</Button> */}
     </header>
   );
 };

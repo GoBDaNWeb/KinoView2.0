@@ -1,4 +1,5 @@
-export const ratingColor = (rating: number) => {
+export const ratingColor = (rating: number | undefined) => {
+  if (!rating) return "defaultRating";
   if (rating === 0) {
     return "defaultRating";
   }

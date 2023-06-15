@@ -4,5 +4,5 @@ export interface IInputProps {
   onChange: (...event: any[]) => void;
   selectValue?: string;
   clearSearchValue: () => void;
-  value: any;
+  value: string;
 }

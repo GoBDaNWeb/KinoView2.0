@@ -5,7 +5,6 @@ import styles from "./styles.module.sass";
 const MovieFacts: FC<IFactsProps> = ({ facts }) => {
   return (
     <div className={styles.facts}>
-      <h5>Интересные факты</h5>
       <ul className={styles.factsList}>
         {facts && facts?.length > 0 ? (
           <>

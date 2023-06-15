@@ -6,10 +6,23 @@
     .imageWrapper
         position: relative
         height: auto
-        width: 35%
-        padding-bottom: 35%
-        min-width: 288px
+        width: 30%
+        aspect-ratio: .70
+        .rating
+            position: absolute
+            top: 1rem
+            left: 1rem
+            width: 16%
+            height: 6%
+            display: flex
+            justify-content: center
+            align-items: center
+            color: #fff
+            z-index: 2
+            font-size: .8rem
+            border-radius: 5px
         img
+            object-fit: cover
             min-width: 100%
             width: auto
     .movieInfoAbout

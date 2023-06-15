@@ -28,14 +28,16 @@ const NewCartoons = () => {
   };
 
   return (
-    <MovieList
-      type="cartoon"
-      isLoading={cartoonsIsLoading}
-      isFetching={cartoonsIsFetching}
-      movieList={cartoons?.docs}
-      changeMovieLimit={chasngeCartoonsLimit}
-      title="Новинки мира мультфильмов"
-    />
+    <section className="container">
+      <MovieList
+        type="cartoon"
+        isLoading={cartoonsIsLoading}
+        isFetching={cartoonsIsFetching}
+        movieList={cartoons?.docs}
+        changeMovieLimit={chasngeCartoonsLimit}
+        title="Новинки мира мультфильмов"
+      />
+    </section>
   );
 };
 
