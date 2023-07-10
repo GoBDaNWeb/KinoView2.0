@@ -1,4 +1,4 @@
-import { FC, ReactNode, useRef } from "react";
+import { FC, useEffect, useState, useRef } from "react";
 import { IMovieListProps } from "../types/movieList.interface";
 import { MovieCard } from "@/components/common/MovieCard";
 import { Skeleton } from "@/components/ui/Skeleton";
@@ -11,17 +11,27 @@ const MovieList: FC<IMovieListProps> = ({
   isLoading,
   isFetching,
   type,
+  total,
   changeMovieLimit,
 }) => {
+  const [disabled, setDisables] = useState<boolean>(false);
+
   const sectionRef = useRef(null);
 
   const clickResetMovies = () => {
     window.scrollTo({
+      //@ts-ignore
       top: sectionRef.current?.offsetTop + 600,
       behavior: "smooth",
     });
     changeMovieLimit("clear");
   };
+
+  const handleDisabled = total === movieList?.length || isFetching;
+
+  useEffect(() => {
+    setDisables(handleDisabled);
+  }, [handleDisabled, isFetching]);
 
   return (
     <div ref={sectionRef} className={styles.movies} id={`${type}`}>
@@ -52,7 +62,7 @@ const MovieList: FC<IMovieListProps> = ({
         <div className={styles.totalMovie}>
           Всего показано: {movieList?.length}
         </div>
-        <Button isDisabled={isFetching} func={() => changeMovieLimit("load")}>
+        <Button isDisabled={disabled} func={() => changeMovieLimit("load")}>
           {isFetching ? "Загрузка..." : "Показать еще"}
         </Button>
         <Button

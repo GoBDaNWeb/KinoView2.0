@@ -5,6 +5,7 @@ import styles from "./styles.module.sass";
 import moment from "moment";
 import Link from "next/link";
 import { InfoBlock } from "@/components/common/InfoBlock";
+import { Skeleton } from "@/components/ui/Skeleton";
 
 const PersonInfo: FC<IPersonInfoProps> = ({ aboutPerson }) => {
   const info = [
@@ -60,9 +61,9 @@ const PersonInfo: FC<IPersonInfoProps> = ({ aboutPerson }) => {
       title: <>{aboutPerson.sex === "Мужской" ? "Супруга" : "Супруг"}</>,
       content: (
         <>
-          {aboutPerson.spouses ? (
+          {aboutPerson.spouses?.length ? (
             <>
-              {aboutPerson.spouses.map((spous: any) => (
+              {aboutPerson.spouses.map((spous) => (
                 <Link href={`/name/${spous.id}`} key={spous.id}>
                   {spous.name}
                 </Link>
@@ -76,7 +77,18 @@ const PersonInfo: FC<IPersonInfoProps> = ({ aboutPerson }) => {
     },
   ];
 
-  return <InfoBlock infoContent={info} />;
+  return (
+    <div className={styles.personAboutList}>
+      <h4>
+        {!aboutPerson.birthday ? (
+          <Skeleton customStyles={{ width: "100px", height: "20px" }} />
+        ) : (
+          <>О персоне </>
+        )}{" "}
+      </h4>
+      <InfoBlock infoContent={info} />
+    </div>
+  );
 };
 
 export default PersonInfo;

@@ -20,7 +20,7 @@ const SearchMovieCard: React.FC<ISearchMovieCard> = ({ movie }) => {
             }
             alt="movie poster"
             className={styles.image}
-            layout="fill"
+            fill
             unoptimized
           />
           <div className={`${styles.rating} ${ratingColor(movie.rating.kp)}`}>
@@ -28,10 +28,10 @@ const SearchMovieCard: React.FC<ISearchMovieCard> = ({ movie }) => {
           </div>
         </div>
         <div className={styles.content}>
-          <>
+          <div className={styles.contentTop}>
             <h3>{movie.name}</h3>
             <h5>{translateMovieType(movie.type)}</h5>
-          </>
+          </div>
           <p className={styles.description}>{cropText(movie.description)}</p>
         </div>
       </div>

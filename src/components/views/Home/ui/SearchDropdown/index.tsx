@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { useDispatch } from "react-redux";
-import { handleHiddenSearchedMovies } from "@/store/slices/searchSlice";
+import { handleHiddenSearchedMovies } from "@/store/slices/search/searchSlice";
 import { useGetMoviesBySearchQuery } from "@/api";
 
 import styles from "./styles.module.sass";
@@ -42,9 +42,15 @@ const SearchDropDown = () => {
         </div>
       ) : (
         <>
-          {data?.docs?.map((movie) => (
-            <SearchMovieCard key={movie.id} movie={movie} />
-          ))}
+          {data?.docs && data?.docs?.length > 0 ? (
+            <>
+              {data?.docs?.map((movie) => (
+                <SearchMovieCard key={movie.id} movie={movie} />
+              ))}
+            </>
+          ) : (
+            <h5>Ничего не найдено</h5>
+          )}
         </>
       )}
     </div>

@@ -1,8 +1,11 @@
-import { useGetMovieByIdQuery } from "@/api";
 import { useRouter } from "next/router";
+
+import { useGetMovieByIdQuery } from "@/api";
+
+import styles from "./styles.module.sass";
+
 import MovieReviews from "../MovieReviews";
 import MovieTabContent from "../MovieTabContent";
-import styles from "./styles.module.sass";
 import Persons from "../Persons";
 import SimilarMovies from "../SimilarMovies";
 

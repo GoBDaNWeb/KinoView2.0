@@ -1,5 +1,7 @@
 import { FC } from "react";
 import { IPersonProps } from "../../types/person.interface";
+import { useGetMoviesByIdQuery } from "@/api";
+
 import Image from "next/image";
 import styles from "./styles.module.sass";
 import { Skeleton } from "@/components/ui/Skeleton";
@@ -16,9 +18,15 @@ const Person: FC<IPersonProps> = ({ person, isLoading }) => {
     totalMovies: person?.movies.length,
     spouses: person?.spouses,
   };
-  console.log("====================================");
-  console.log(person);
-  console.log("====================================");
+  const countFilms = Number(person?.movies?.length) - 1;
+  const query = person?.movies
+    ?.map((el) => `search=${el.id}&field=id`)
+    .join("&");
+  const { data: personMovies } = useGetMoviesByIdQuery({
+    query,
+    limit: countFilms + 1,
+  });
+
   return (
     <div className={`${styles.person} container`}>
       <div className={styles.mainInfo}>
@@ -36,19 +44,32 @@ const Person: FC<IPersonProps> = ({ person, isLoading }) => {
               src={person.photo ? person.photo : "/image-not-found.jpg"}
               alt="movie"
               fill
+              sizes="100%"
             />
           )}
         </div>
         <div className={styles.info}>
-          <h3 className={styles.name}>{person?.name}</h3>
-          <h5 className={styles.nameEng}>{person?.enName}</h5>
-          <>
-            <h4 className={styles.aboutPersonTitle}>О Персоне</h4>
-            <PersonInfo aboutPerson={aboutPerson} />
-          </>
+          <div className={styles.aboutMain}>
+            <h3 className={styles.name}>
+              {!person?.name ? (
+                <Skeleton customStyles={{ height: "22px", width: "200px" }} />
+              ) : (
+                <>{person?.name}</>
+              )}
+            </h3>
+            <h5 className={styles.nameEng}>
+              {!person?.enName ? (
+                <Skeleton customStyles={{ height: "22px", width: "100px" }} />
+              ) : (
+                <>{person?.enName}</>
+              )}
+            </h5>
+          </div>
+
+          <PersonInfo aboutPerson={aboutPerson} />
         </div>
       </div>
-      <PersonFilms movieData={person?.movies} isLoading={isLoading} />
+      <PersonFilms movieData={personMovies} isLoading={isLoading} />
     </div>
   );
 };

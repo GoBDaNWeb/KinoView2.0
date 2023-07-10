@@ -1,3 +1,5 @@
+@import '@/styles/variables'
+    
 .dropdown 
     width: 100%
     background: #000
@@ -12,9 +14,13 @@
     flex-direction: column
     overflow-y: auto
     transition: 300ms ease
+    @media(max-width: $tab-sm)
+        width: 92%
     .loading 
         display: flex
         justify-content: center
+    h5
+        text-align: center
     
 
 

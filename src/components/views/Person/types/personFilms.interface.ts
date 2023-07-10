@@ -1,6 +1,6 @@
-import { IMovie } from "@/shared/types/movie.interface";
+import { IMovies } from "@/shared/types/movie.interface";
 
 export interface IPersonFilmsProps {
-  movieData: IMovie[] | undefined;
+  movieData: IMovies | undefined;
   isLoading: boolean;
 }

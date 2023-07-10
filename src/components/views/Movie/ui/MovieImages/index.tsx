@@ -43,13 +43,13 @@ const MovieImages = () => {
           <>
             {movieImages?.docs.map((image, index: number) => {
               return (
-                <a className={styles.imageWrapper} key={index} href={image.url}>
-                  <Image
-                    layout="fill"
-                    className={styles.image}
-                    src={image.url}
-                    alt=""
-                  />
+                <a
+                  className={styles.imageWrapper}
+                  key={index}
+                  data-src={image.url}
+                  href={image.url}
+                >
+                  <Image fill className={styles.image} src={image.url} alt="" />
                 </a>
               );
             })}

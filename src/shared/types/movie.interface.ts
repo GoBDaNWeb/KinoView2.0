@@ -146,4 +146,7 @@ export interface IMovie {
 export interface IMovies {
   docs: IMovie[];
   pages?: number;
+  total?: number;
+  limit?: number;
+  page?: number;
 }

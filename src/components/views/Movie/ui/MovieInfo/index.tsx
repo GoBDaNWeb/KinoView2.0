@@ -1,13 +1,17 @@
-import Image from "next/image";
 import { FC } from "react";
-import AboutMovie from "../AboutMovie";
-import { IMovieProps } from "../../types/movie.interface";
-import { Skeleton } from "@/components/ui/Skeleton";
-import styles from "./styles.module.sass";
+import Image from "next/image";
+
+import { IMovieInfoProps } from "../../types/movieInfo.interface";
+
 import { ratingColor } from "@/shared/helpers/ratingColor";
 import { convertRating } from "@/shared/helpers/convertRating";
 
-const MovieInfo: FC<IMovieProps> = ({ movieData, isLoading }) => {
+import styles from "./styles.module.sass";
+
+import AboutMovie from "../AboutMovie";
+import { Skeleton } from "@/components/ui/Skeleton";
+
+const MovieInfo: FC<IMovieInfoProps> = ({ movieData, isLoading }) => {
   const aboutMovieData = {
     year: movieData?.year,
     countries: movieData?.countries,
@@ -20,7 +24,6 @@ const MovieInfo: FC<IMovieProps> = ({ movieData, isLoading }) => {
     ageRating: movieData?.ageRating,
     budget: movieData?.budget,
   };
-  console.log("movieData", movieData);
 
   return (
     <div className={styles.movieInfo}>
@@ -45,6 +48,7 @@ const MovieInfo: FC<IMovieProps> = ({ movieData, isLoading }) => {
             src={`https://st.kp.yandex.net/images/film_iphone/iphone360_${movieData.id}.jpg`}
             fill
             alt="movie"
+            sizes="100%"
           />
         )}
       </div>
@@ -67,12 +71,7 @@ const MovieInfo: FC<IMovieProps> = ({ movieData, isLoading }) => {
               movieData?.slogan
             )}
           </h3>
-          {/* <Button func={() => console.log("asd")}>
-            <BsBookmark />
-            Добавить в избранное
-          </Button> */}
         </div>
-
         <AboutMovie aboutMovieData={aboutMovieData} />
       </div>
     </div>

@@ -1,21 +1,25 @@
+@import '@/styles/variables'
+    
 .button
     cursor: pointer
     padding: 10px 20px
-    border-radius: var(--rounded)
-    background: var(--accent-color)
+    border-radius: $rounded
+    background: $accent-color
     border: none
     color: #fff
-    transition: all var(--transition)
+    transition: all $transition
     font-size: 1.2rem
     display: flex
     align-items: center
     justify-content: center
     gap: 15px
     white-space: nowrap
+    @media(max-width: $tab)
+        font-size: $fs-24
     &:hover
-        background: var(--accent-color-hover)
+        background: $accent-color-hover
     &:disabled
         pointer-events: none
         opacity: .5
     &:active
-        background: var(--accent-color-active)
+        background: $accent-color-active

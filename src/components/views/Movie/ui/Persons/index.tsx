@@ -33,8 +33,9 @@ const Persons: FC<ISimilarMoviesProps> = ({ movieData, isLoading }) => {
         </>
       ) : (
         <>
-          {movieData?.persons.map((person) => (
-            <SwiperSlide key={person.id}>
+          {movieData?.persons.map((person, index) => (
+            // Из-за того что в API может приходить по несколько одинаковых обьектов, приходится использоваить индексы вместо айдишников
+            <SwiperSlide key={index}>
               <PersonCard
                 id={person.id}
                 name={person.name}

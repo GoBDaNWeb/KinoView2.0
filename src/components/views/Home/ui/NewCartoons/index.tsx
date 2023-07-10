@@ -1,7 +1,7 @@
 import { useGetNewCartoonsQuery } from "@/api";
 import { MovieList } from "@/components/common/MovieList";
 import { RootState } from "@/store";
-import { setCartoonsListLimit } from "@/store/slices/cartoonsSlice";
+import { setCartoonsListLimit } from "@/store/slices/cartoons/cartoonsSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const NewCartoons = () => {
@@ -34,6 +34,7 @@ const NewCartoons = () => {
         isLoading={cartoonsIsLoading}
         isFetching={cartoonsIsFetching}
         movieList={cartoons?.docs}
+        total={cartoons?.total}
         changeMovieLimit={chasngeCartoonsLimit}
         title="Новинки мира мультфильмов"
       />

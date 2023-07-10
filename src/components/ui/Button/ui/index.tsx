@@ -8,11 +8,16 @@ const Button: FC<PropsWithChildren<IButtonProps>> = ({
   func,
   customStyles,
 }) => {
+  const handleClick = () => {
+    if (isDisabled) return;
+    func();
+  };
+
   return (
     <button
       style={{ ...customStyles }}
       className={styles.button}
-      onClick={() => func()}
+      onClick={handleClick}
       disabled={isDisabled}
     >
       {children}

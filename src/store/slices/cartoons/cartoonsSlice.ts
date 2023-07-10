@@ -1,9 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import { ICartoonSliceState } from "./types";
 
-const initialState: {
-  cartoonsListLimit: number;
-} = {
+const initialState: ICartoonSliceState = {
   cartoonsListLimit: 10,
 };
 
@@ -11,7 +10,10 @@ export const cartoonsSlice = createSlice({
   name: "films",
   initialState,
   reducers: {
-    setCartoonsListLimit: (state, action) => {
+    setCartoonsListLimit: (
+      state: ICartoonSliceState,
+      action: PayloadAction<number>
+    ) => {
       state.cartoonsListLimit = action.payload;
     },
   },

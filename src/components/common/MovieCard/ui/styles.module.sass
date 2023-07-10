@@ -1,7 +1,9 @@
 @import '@/styles/variables'
 
 .movieCard
-    transition: transform var(--transition)
+    transition: transform $transition
+    .imageWrapper.blur
+        filter: blur(20px)
     .imageWrapper
         height: auto
         width: 100%
@@ -9,8 +11,10 @@
         position: relative
         overflow: hidden
         padding-bottom: 140%
+        aspect-ratio: 20
+        transition: all $transition
         img
-            transition: all var(--transition)
+            transition: all $transition
             position: absolute
             top: 0
             bottom: 0
@@ -42,7 +46,7 @@
             margin-top: 10px
             color: #fff
             font-weight: 400
-            font-size: $fs-14
+            font-size: $fs-20
             opacity: .5
     &:hover
         transform: translateY(-5px)

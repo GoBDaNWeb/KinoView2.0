@@ -1,10 +1,10 @@
 interface IFilters {
-  rating: string;
-  year: string;
+  rating: string | number;
+  year: string | number;
   sortByRelease?: string;
   genres: string;
   search?: string;
-  type: string | undefined;
+  type?: string;
   sortBy: string;
   order: string;
   limit: number;

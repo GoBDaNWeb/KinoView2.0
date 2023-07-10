@@ -1,12 +1,17 @@
+@import '@/styles/variables'
+    
 .personCard
+    .imageWrapper.blur
+        filter: blur(20px)
     .imageWrapper
+        transition: all $transition
         // height: auto
         background: gray
         position: relative
         overflow: hidden
-        padding-bottom: 140%
+        aspect-ratio: .7
         img
-            transition: all var(--transition)
+            transition: all $transition
             position: absolute
             top: 0
             bottom: 0
@@ -17,3 +22,8 @@
             height: 100%
             margin: auto
             object-fit: cover
+    .personName 
+        margin-top: .7rem
+        color: #fff
+        font-weight: 500
+        font-size: $fs-24

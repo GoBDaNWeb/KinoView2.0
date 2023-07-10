@@ -7,4 +7,5 @@ export interface IMovieListProps {
   isFetching: boolean;
   changeMovieLimit: (type: string) => void;
   type: string;
+  total: number | undefined;
 }

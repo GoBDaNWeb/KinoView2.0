@@ -8,11 +8,9 @@ import { Skeleton } from "@/components/ui/Skeleton";
 import { SwiperSlide } from "swiper/react";
 
 const PersonFilms: FC<IPersonFilmsProps> = ({ movieData, isLoading }) => {
-  console.log("movieData", movieData);
-
   return (
     <Carousel
-      quantity={movieData?.length}
+      quantity={movieData?.docs.length}
       title="Фильмы и сериалы"
       errorText="Фильмов не найдено"
       slidesPerView={7}
@@ -33,7 +31,7 @@ const PersonFilms: FC<IPersonFilmsProps> = ({ movieData, isLoading }) => {
         ))
       ) : (
         <>
-          {movieData?.map((movie) => (
+          {movieData?.docs.map((movie) => (
             <SwiperSlide key={movie.id}>
               <MovieCard movie={movie} />
             </SwiperSlide>

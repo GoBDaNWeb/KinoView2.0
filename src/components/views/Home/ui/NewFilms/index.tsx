@@ -2,7 +2,7 @@ import { useGetNewFilmsQuery } from "@/api";
 import { MovieList } from "@/components/common/MovieList";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/store";
-import { setFilmsListLimit } from "@/store/slices/filmsSlice";
+import { setFilmsListLimit } from "@/store/slices/films/filmsSlice";
 
 const NewFilms = () => {
   const dispatch = useDispatch();
@@ -27,8 +27,6 @@ const NewFilms = () => {
     }
   };
 
-  console.log(films);
-
   return (
     <section className="container">
       <MovieList
@@ -38,6 +36,7 @@ const NewFilms = () => {
         movieList={films?.docs}
         changeMovieLimit={changeFilmsLimit}
         title="Новинки мира кино"
+        total={films?.total}
       />
     </section>
   );

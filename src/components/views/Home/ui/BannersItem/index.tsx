@@ -32,6 +32,7 @@ const BannersItem = ({ id }: { id: string }) => {
             src={movie?.backdrop.url ? movie?.backdrop.url : image.docs[0].url}
             alt="movie"
             fill
+            sizes="100%"
           />
           <div className={styles.imageWrapperContent}>
             <div className={styles.contentTop}>

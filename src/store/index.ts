@@ -1,13 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { movieApi } from "@/api";
 import { createWrapper } from "next-redux-wrapper";
-import filmReducer from "./slices/filmsSlice";
-import serialsReducer from "./slices/serialsSlice";
-import cartoonsReducer from "./slices/cartoonsSlice";
-import animeReducer from "./slices/animeSlice";
-import searchMovieReducer from "./slices/searchSlice";
-import filtersReducer from "./slices/filterSlice";
-import paginationReducer from "./slices/paginationSlice";
+import filmReducer from "./slices/films/filmsSlice";
+import serialsReducer from "./slices/serial/serialsSlice";
+import cartoonsReducer from "./slices/cartoons/cartoonsSlice";
+import animeReducer from "./slices/anime/animeSlice";
+import searchMovieReducer from "./slices/search/searchSlice";
+import filtersReducer from "./slices/filter/filterSlice";
+import paginationReducer from "./slices/pagination/paginationSlice";
+import burgerReducer from "./slices/burger/burgerSlice";
 
 export const store = () =>
   configureStore({
@@ -19,6 +20,7 @@ export const store = () =>
       searchMovie: searchMovieReducer,
       filters: filtersReducer,
       pagination: paginationReducer,
+      burger: burgerReducer,
       [movieApi.reducerPath]: movieApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>

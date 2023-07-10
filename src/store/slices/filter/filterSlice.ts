@@ -1,18 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
-import type { RootState } from "../index";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import type { RootState } from "../../index";
+import { IFilterSliceState } from "./types";
 
-const initialState: {
-  filters: {
-    order: string;
-    genres: string;
-    rating: string;
-    year: string;
-    search: string;
-    type: string | undefined;
-    sortBy: string;
-    limit: number;
-  };
-} = {
+const initialState: IFilterSliceState = {
   filters: {
     order: "-1",
     genres: "",
@@ -29,7 +19,7 @@ const filterSlice = createSlice({
   name: "filter",
   initialState,
   reducers: {
-    setType: (state, action) => {
+    setType: (state: IFilterSliceState, action) => {
       let type;
       if (action.payload === "films") {
         type = "1";
@@ -42,25 +32,31 @@ const filterSlice = createSlice({
       }
       state.filters.type = type;
     },
-    setSortBy: (state, action) => {
+    setSortBy: (state: IFilterSliceState, action: PayloadAction<string>) => {
       state.filters.sortBy = action.payload;
     },
-    setOrder: (state, action) => {
+    setOrder: (state: IFilterSliceState, action: PayloadAction<string>) => {
       state.filters.order = action.payload;
     },
-    setGenres: (state, action) => {
+    setGenres: (state: IFilterSliceState, action: PayloadAction<string>) => {
       state.filters.genres = action.payload;
     },
-    setRating: (state, action) => {
+    setRating: (
+      state: IFilterSliceState,
+      action: PayloadAction<string | number>
+    ) => {
       state.filters.rating = action.payload;
     },
-    setYear: (state, action) => {
+    setYear: (
+      state: IFilterSliceState,
+      action: PayloadAction<string | number>
+    ) => {
       state.filters.year = action.payload;
     },
-    setSearch: (state, action) => {
+    setSearch: (state: IFilterSliceState, action: PayloadAction<string>) => {
       state.filters.search = action.payload;
     },
-    resetFilters: (state) => {
+    resetFilters: (state: IFilterSliceState) => {
       state.filters = initialState.filters;
     },
   },

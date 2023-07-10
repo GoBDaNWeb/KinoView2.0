@@ -1,7 +1,7 @@
 import { useGetNewSerialsQuery } from "@/api";
 import { MovieList } from "@/components/common/MovieList";
 import { RootState } from "@/store";
-import { setSerialsListLimit } from "@/store/slices/serialsSlice";
+import { setSerialsListLimit } from "@/store/slices/serial/serialsSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const NewSerials = () => {
@@ -38,6 +38,7 @@ const NewSerials = () => {
         movieList={serials?.docs}
         changeMovieLimit={changeSerialsLimit}
         title="Новинки мира сериалов"
+        total={serials?.total}
       />
     </section>
   );

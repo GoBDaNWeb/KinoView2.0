@@ -10,7 +10,7 @@ import {
   setYear,
   setSortBy,
   setOrder,
-} from "@/store/slices/filterSlice";
+} from "@/store/slices/filter/filterSlice";
 
 import styles from "./styles.module.sass";
 
@@ -44,10 +44,7 @@ const Filters = () => {
       const ratingString = `${rating[0]}-${rating[1]}`;
       const yearString = `${year[0]}-${year[1]}`;
       const genre = genres === "Все жанры" ? null : genres;
-      const genreFilter =
-        genre !== null && genre !== ""
-          ? `search[]=${genres}&field[]=genres.name&`
-          : "";
+      const genreFilter = genre !== null && genre !== "" ? genres : "";
       const ratingFilter = rating[0] !== rating[1] ? ratingString : rating[0];
       const yearsFilter = year[0] !== year[1] ? yearString : year[0];
 

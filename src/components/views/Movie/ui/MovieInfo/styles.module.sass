@@ -1,13 +1,24 @@
+@import '@/styles/variables'
+    
 .movieInfo
     display: flex
+    align-items: flex-start
     gap: 5rem
     z-index: 2
     position: relative
+    @media(max-width: $tab)
+        flex-direction: column
     .imageWrapper
         position: relative
         height: auto
         width: 30%
         aspect-ratio: .70
+        min-width: 230px
+        @media(max-width: $tab)
+            width: 60%
+            margin: 0 auto
+        @media(max-width: $tab-sm)
+            width: 100%
         .rating
             position: absolute
             top: 1rem
@@ -35,12 +46,14 @@
             flex-direction: column
             gap: 15px
             align-items: flex-start
+            margin-bottom: 25px
             .movieTitle
                 font-size: 2.5rem
                 font-weight: 700
                 color: #fff
+                @media(max-width: $tab)
+                    text-align: center
             .movieSlogan
                 font-size: 1.4rem
                 font-weight: 400
                 color: #fff
-                margin-bottom: 25px

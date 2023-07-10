@@ -7,6 +7,8 @@
         font-size: 2rem
         color: #fff
         margin-bottom: 20px
+        @media(max-width: $tab)
+            font-size: $fs-32
     .moviesList
         display: grid
         grid-template-columns: repeat(5,1fr)
@@ -24,5 +26,10 @@
         justify-content: space-between
         align-items: center
         margin-top: 50px
+        @media(max-width: $tab)
+            margin-top: 20px
+        .totalMovie
+            @media(max-width: $tab-sm)
+                display: none
         button
             width: 162px

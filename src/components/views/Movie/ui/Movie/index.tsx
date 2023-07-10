@@ -1,12 +1,19 @@
-import { FC } from "react";
-import { IMovieProps } from "../../types/movie.interface";
-import MovieInfo from "../MovieInfo";
-import MovieTabContent from "../MovieTabContent";
+import { useRouter } from "next/router";
+import { useGetMovieByIdQuery } from "@/api";
+
 import styles from "./styles.module.sass";
+
+import MovieInfo from "../MovieInfo";
 import MovieContent from "../MovieContent";
 
-const Movie: FC<IMovieProps> = ({ movieData, isLoading }) => {
-  const backdropImg = movieData?.backdrop?.url;
+const Movie = () => {
+  const {
+    query: { id },
+  } = useRouter();
+
+  const { data: movie, isLoading } = useGetMovieByIdQuery(id);
+
+  const backdropImg = movie?.backdrop?.url;
 
   return (
     <div
@@ -16,7 +23,7 @@ const Movie: FC<IMovieProps> = ({ movieData, isLoading }) => {
         paddingTop: `${backdropImg ? "15rem" : "8rem"}`,
       }}
     >
-      {movieData?.backdrop?.url ? (
+      {movie?.backdrop?.url ? (
         <div
           className={styles.movieBg}
           style={{ backgroundImage: `url(${backdropImg})` }}
@@ -24,7 +31,7 @@ const Movie: FC<IMovieProps> = ({ movieData, isLoading }) => {
           <div className={styles.movieBgBackdrop}></div>
         </div>
       ) : null}
-      <MovieInfo movieData={movieData} isLoading={isLoading} />
+      <MovieInfo movieData={movie} isLoading={isLoading} />
       <MovieContent />
     </div>
   );

@@ -6,7 +6,7 @@ import {
   setSearchValue,
   setSearchType,
   handleHiddenSearchedMovies,
-} from "@/store/slices/searchSlice";
+} from "@/store/slices/search/searchSlice";
 
 import useDebounce from "@/shared/hooks/useDebounce";
 
@@ -56,7 +56,7 @@ const SearchForm = () => {
   }, [WatchSelect]);
 
   useEffect(() => {
-    dispatch(setSearchValue(WatchSearch));
+    dispatch(setSearchValue(debounced));
   }, [debounced, dispatch, WatchSearch]);
 
   useEffect(() => {
@@ -90,7 +90,7 @@ const SearchForm = () => {
             value={value}
             onBlur={() => handleVisibleSearchList(false)}
             onFocus={() => handleVisibleSearchList(true)}
-            selectValue={WatchSelect}
+            placeholder={WatchSelect ? `Найти ${WatchSelect}` : "Поиск"}
             clearSearchValue={clearSearchValue}
           />
         )}

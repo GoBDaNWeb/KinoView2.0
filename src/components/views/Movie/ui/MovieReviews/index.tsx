@@ -17,6 +17,9 @@ const MovieReviews = () => {
   const onLoadMoreReviews = () => {
     setLimit((prev) => prev + 3);
   };
+  const onResetReviews = () => {
+    setLimit(3);
+  };
 
   const reviewsCondition =
     reviews && reviews.docs.length > 0 && reviews.docs.length < reviews.total;
@@ -35,11 +38,14 @@ const MovieReviews = () => {
           <div className={styles.empty}>Рецензий пока что нет</div>
         )}
         <div className={styles.buttons}>
-          {reviewsCondition && (
-            <Button func={onLoadMoreReviews}>
-              {isFetching ? "Загрузка..." : "Показать еще"}
-            </Button>
-          )}
+          <Button isDisabled={!reviewsCondition} func={onLoadMoreReviews}>
+            {isFetching ? "Загрузка..." : "Показать еще"}
+          </Button>
+          {reviews && reviews.docs?.length > 3 ? (
+            <div className={styles.resetBtn}>
+              <Button func={onResetReviews}>Скрыть</Button>
+            </div>
+          ) : null}
         </div>
       </div>
     </div>

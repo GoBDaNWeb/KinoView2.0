@@ -10,20 +10,20 @@ const Input: React.FC<IInputProps> = ({
   onFocus,
   onBlur,
   onChange,
-  selectValue,
   clearSearchValue,
   value,
+  placeholder,
+  type = "text",
 }) => {
   return (
-    <label htmlFor="search-input" className={styles.searchInput}>
+    <label className={styles.searchInput}>
       <input
         onChange={onChange}
         onFocus={onFocus}
         onBlur={onBlur}
-        type="search"
+        type={type}
         value={value}
-        id="search-input"
-        placeholder={selectValue ? `Найти ${selectValue}` : "Поиск"}
+        placeholder={placeholder}
       />
       {value && (
         <AiOutlineClose

@@ -1,11 +1,16 @@
 import { FC, Fragment } from "react";
+import moment from "moment";
+
 import { IAboutMovieProps } from "../../types/movie.interface";
+
 import { convertFees } from "../../helpers/convertFees";
 import { convertMovieType } from "../../helpers/converMovieType";
-import { Skeleton } from "@/components/ui/Skeleton";
+
 import styles from "./styles.module.sass";
+
+import { Skeleton } from "@/components/ui/Skeleton";
 import { InfoBlock } from "@/components/common/InfoBlock";
-import moment from "moment";
+import { Badge } from "@/components/ui/Badge";
 
 const AboutMovie: FC<IAboutMovieProps> = ({ aboutMovieData }) => {
   const {
@@ -18,8 +23,8 @@ const AboutMovie: FC<IAboutMovieProps> = ({ aboutMovieData }) => {
     premiere,
     movieLength,
     budget,
+    ageRating,
   } = aboutMovieData;
-  console.log("aboutMovieData", aboutMovieData);
 
   const info = [
     { title: "Год производства", content: <>{year ? year : "-"}</> },
@@ -63,6 +68,10 @@ const AboutMovie: FC<IAboutMovieProps> = ({ aboutMovieData }) => {
       content: <>{budget?.value ? `$${convertFees(budget.value)}` : "-"}</>,
     },
     {
+      title: "Возраст",
+      content: <>{ageRating ? <Badge>{ageRating}+</Badge> : "-"}</>,
+    },
+    {
       title: "Время",
       content: <>{movieLength ? `${movieLength} мин` : "-"} </>,
     },
@@ -77,7 +86,7 @@ const AboutMovie: FC<IAboutMovieProps> = ({ aboutMovieData }) => {
   ];
 
   return (
-    <>
+    <div className={styles.movieAboutList}>
       <h4>
         {!type ? (
           <Skeleton customStyles={{ width: "100px", height: "20px" }} />
@@ -86,7 +95,7 @@ const AboutMovie: FC<IAboutMovieProps> = ({ aboutMovieData }) => {
         )}{" "}
       </h4>
       <InfoBlock infoContent={info} />
-    </>
+    </div>
   );
 };
 

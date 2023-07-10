@@ -1,3 +1,5 @@
+@import '@/styles/variables'
+    
 .header
     background: var(--main-color)
     box-shadow: var(--shadow)
@@ -8,6 +10,7 @@
     height: 4rem
     display: flex
     align-items: center
+    justify-content: space-between
     z-index: 900
     .logoBtn 
         background: none
@@ -17,6 +20,8 @@
         display: flex
         justify-content: center
         width: 100%
+        @media(max-width: $tab)
+            display: none
         .headerNavList
             display: flex
             gap: 20px

@@ -6,8 +6,8 @@ import { convertMovieType } from "../helpers/convertMovieType";
 import styles from "./styles.module.sass";
 
 import { useDispatch, useSelector } from "react-redux";
-import { setType } from "@/store/slices/filterSlice";
-import { setPage } from "@/store/slices/paginationSlice";
+import { setType } from "@/store/slices/filter/filterSlice";
+import { setPage } from "@/store/slices/pagination/paginationSlice";
 import { RootState } from "@/store";
 import { useGetMoviesQuery } from "@/api";
 import { Filters } from "@/components/common/Filters";

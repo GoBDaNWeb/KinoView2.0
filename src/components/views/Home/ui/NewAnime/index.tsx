@@ -1,7 +1,7 @@
 import { useGetNewAnimeQuery } from "@/api";
 import { MovieList } from "@/components/common/MovieList";
 import { RootState } from "@/store";
-import { setAnimeListLimit } from "@/store/slices/animeSlice";
+import { setAnimeListLimit } from "@/store/slices/anime/animeSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const NewAnime = () => {
@@ -35,6 +35,7 @@ const NewAnime = () => {
         movieList={anime?.docs}
         changeMovieLimit={changeAnimeLimit}
         title="Новинки мира аниме"
+        total={anime?.total}
       />
     </section>
   );

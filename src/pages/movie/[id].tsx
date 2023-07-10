@@ -22,7 +22,7 @@ const MoviePage = () => {
     query: { id },
   } = useRouter();
 
-  const { data: movie, isLoading } = useGetMovieByIdQuery(id);
+  const { data: movie } = useGetMovieByIdQuery(id);
 
   return (
     <>
@@ -33,7 +33,7 @@ const MoviePage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <Movie movieData={movie} isLoading={isLoading} />
+      <Movie />
       <Footer />
     </>
   );

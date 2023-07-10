@@ -1,7 +1,9 @@
+@import '@/styles/variables'
+    
 .review
-    width: 800px
-    background: var(--main-color)
-    border-radius: var(--rounded)
+    max-width: 800px
+    background: $main-color
+    border-radius: $rounded
     .reviewContent
         padding: 1rem
         p
@@ -17,11 +19,13 @@
     .reviewBottom
         position: relative
         height: 50px
-        border-top: 1px solid var(--second-color)
+        border-top: 1px solid $second-color
         display: flex
         align-items: center
         justify-content: center
         padding: 1rem
+        @media(max-width: $tab-sm)
+            justify-content: flex-end
         span
             position: absolute
             left: 1rem
