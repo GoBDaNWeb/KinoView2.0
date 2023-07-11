@@ -27,38 +27,35 @@ export const movieApi = createApi({
   endpoints: (builder) => ({
     getNewFilms: builder.query<IMovies, number>({
       query: (limit) =>
-        `v1.3/movie?field=rating.kp&field=year&field=typeNumber&search=1-10&search=2023&search=1&limit=${limit}&sortField=year&sortField=votes.imdb&sortType=1&sortType=-1&token=${process.env.NEXT_PUBLIC_API_KEY}`,
+        `v1.3/movie?field=rating.kp&field=year&field=typeNumber&search=1-10&search=2023&search=1&limit=${limit}&sortField=year&sortField=votes.imdb&sortType=1&sortType=-1`,
     }),
     getNewSerials: builder.query<IMovies, number>({
       query: (limit) =>
-        `v1.3/movie?field=rating.kp&field=year&field=typeNumber&search=1-10&search=2023&search=2&limit=${limit}&sortField=year&sortField=votes.imdb&sortType=1&sortType=-1&token=${process.env.NEXT_PUBLIC_API_KEY}`,
+        `v1.3/movie?field=rating.kp&field=year&field=typeNumber&search=1-10&search=2023&search=2&limit=${limit}&sortField=year&sortField=votes.imdb&sortType=1&sortType=-1`,
     }),
     getNewCartoons: builder.query<IMovies, number>({
       query: (limit) =>
-        `v1.3/movie?field=rating.kp&field=year&field=typeNumber&search=1-10&search=2023&search=3&limit=${limit}&sortField=year&sortField=votes.imdb&sortType=1&sortType=-1&token=${process.env.NEXT_PUBLIC_API_KEY}`,
+        `v1.3/movie?field=rating.kp&field=year&field=typeNumber&search=1-10&search=2023&search=3&limit=${limit}&sortField=year&sortField=votes.imdb&sortType=1&sortType=-1`,
     }),
     getNewAnime: builder.query<IMovies, number>({
       query: (limit) =>
-        `v1.3/movie?field=rating.kp&field=year&field=typeNumber&search=1-10&search=2023&search=4&limit=${limit}&sortField=year&sortField=votes.imdb&sortType=1&sortType=-1&token=${process.env.NEXT_PUBLIC_API_KEY}`,
+        `v1.3/movie?field=rating.kp&field=year&field=typeNumber&search=1-10&search=2023&search=4&limit=${limit}&sortField=year&sortField=votes.imdb&sortType=1&sortType=-1`,
     }),
     getMovieById: builder.query<IMovie, string | string[] | undefined>({
       query: (id) => `v1.3/movie/${id}`,
     }),
-    // getBestFilms: builder.query<IMovies, number>({
-    //   query: () =>
-    //     `movie?field=rating.kp&search=9-10&sortField=rating.kp&sortType=-1&field=typeNumber&search=1&token=${process.env.NEXT_PUBLIC_API_KEY}`,
-    // }),
+
     getMovieImage: builder.query<IImages, IBaseQuery>({
       query: ({ id, limit }) =>
-        `v1/image?search=${id}&field=movieId&limit=${limit}&token=${process.env.NEXT_PUBLIC_API_KEY}`,
+        `v1/image?search=${id}&field=movieId&limit=${limit}`,
     }),
     getReviews: builder.query<IReviews, IBaseQuery>({
       query: ({ id, limit }) =>
-        `review?search=${id}&field=movieId&limit=${limit}&token=${process.env.NEXT_PUBLIC_API_KEY}`,
+        `review?search=${id}&field=movieId&limit=${limit}`,
     }),
     getMoviesBySearch: builder.query<IMovies, IBaseQuery>({
       query: ({ query, type }) =>
-        `v1.3/movie?search=${query}&field=name&limit=10&sortField=rating.kp&sortType=-1&field=typeNumber&search=${type}&isStrict=false&token=${process.env.NEXT_PUBLIC_API_KEY}`,
+        `v1.3/movie?search=${query}&field=name&limit=10&sortField=rating.kp&sortType=-1&field=typeNumber&search=${type}&isStrict=false`,
     }),
     getMovies: builder.query<IMovies, IQuery>({
       query: ({ filters, page }) =>
@@ -71,15 +68,13 @@ export const movieApi = createApi({
         }&page=${page}`,
     }),
     getPersonById: builder.query<IPerson, string | string[] | undefined>({
-      query: (id) =>
-        `person?search=${id}&field=id&token=${process.env.NEXT_PUBLIC_API_KEY}`,
+      query: (id) => `v1/person/${id}`,
     }),
     getMoviesById: builder.query<
       IMovies,
       { query: string | undefined; limit: number }
     >({
-      query: ({ query, limit }) =>
-        `v1.3/movie?${query}&limit=${limit}&token=${process.env.NEXT_PUBLIC_API_KEY}`,
+      query: ({ query, limit }) => `v1.3/movie?${query}&limit=${limit}`,
     }),
   }),
 });
