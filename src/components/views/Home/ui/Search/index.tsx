@@ -1,8 +1,7 @@
-// * styles
 import styles from "./styles.module.sass";
 
-// * components
 import SearchForm from "../SearchForm";
+//@ts-ignore
 import SearchDropDown from "../SearchDropDown";
 
 const Search = () => {
