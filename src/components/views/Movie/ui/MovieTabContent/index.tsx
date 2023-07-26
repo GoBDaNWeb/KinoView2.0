@@ -1,11 +1,9 @@
-import { FC } from "react";
-import Carousel from "@/components/common/Carousel/ui";
-import { SwiperSlide } from "swiper/react";
-import { MovieCard } from "@/components/common/MovieCard";
+import { useRouter } from "next/router";
+
+import { useGetMovieByIdQuery } from "@/shared/api";
+
 import MovieImages from "../MovieImages";
 import MovieDescription from "../MovieDescription";
-import { useRouter } from "next/router";
-import { useGetMovieByIdQuery } from "@/api";
 import { Tabs } from "@/components/ui/Tabs";
 import MovieFacts from "../MovieFacts";
 

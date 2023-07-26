@@ -1,4 +1,4 @@
-import { IData } from "../../shared/types/data.interface";
+import { IData } from "@/shared/types/data.interface";
 
 export interface IImage {
   width: number;

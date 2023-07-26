@@ -1,18 +1,18 @@
 import React, { useEffect, useCallback } from "react";
 import { Controller, useForm } from "react-hook-form";
-
 import { useDispatch } from "react-redux";
+
 import {
   setSearchValue,
   setSearchType,
   handleHiddenSearchedMovies,
-} from "@/store/slices/search/searchSlice";
-
+} from "@/shared/store/slices/search/searchSlice";
 import useDebounce from "@/shared/hooks/useDebounce";
+
+import styles from "./styles.module.sass";
 
 import { Select } from "@/components/ui/Select";
 import { Input } from "@/components/ui/Input";
-import styles from "./styles.module.sass";
 
 const options = [
   { label: "Что Угодно", value: "Что Угодно" },

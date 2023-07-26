@@ -1,11 +1,14 @@
 import Image from "next/image";
-import { useGetMovieImageQuery } from "@/api";
+import { useRouter } from "next/router";
 import LightGallery from "lightgallery/react";
+
+import { useGetMovieImageQuery } from "@/shared/api";
+
 import "lightgallery/css/lightgallery.css";
 import "lightgallery/css/lg-zoom.css";
 import lgZoom from "lightgallery/plugins/zoom";
-import { useRouter } from "next/router";
 import styles from "./styles.module.sass";
+
 import { Skeleton } from "@/components/ui/Skeleton";
 
 const MovieImages = () => {

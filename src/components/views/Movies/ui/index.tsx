@@ -1,15 +1,16 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import { useDispatch, useSelector } from "react-redux";
 
 import { convertMovieType } from "../helpers/convertMovieType";
 
+import { setType } from "@/shared/store/slices/filter/filterSlice";
+import { setPage } from "@/shared/store/slices/pagination/paginationSlice";
+import { RootState } from "@/shared/store";
+import { useGetMoviesQuery } from "@/shared/api";
+
 import styles from "./styles.module.sass";
 
-import { useDispatch, useSelector } from "react-redux";
-import { setType } from "@/store/slices/filter/filterSlice";
-import { setPage } from "@/store/slices/pagination/paginationSlice";
-import { RootState } from "@/store";
-import { useGetMoviesQuery } from "@/api";
 import { Filters } from "@/components/common/Filters";
 import { MovieCard } from "@/components/common/MovieCard";
 import { Pagination } from "@/components/ui/Pagination";

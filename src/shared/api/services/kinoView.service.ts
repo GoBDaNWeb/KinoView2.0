@@ -1,9 +1,10 @@
+import { HYDRATE } from "next-redux-wrapper";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+
 import { IMovie, IMovies } from "@/shared/types/movie.interface";
 import { IQuery, IBaseQuery } from "../types/query.interface";
-import { IImages } from "@/api/types/image.interface";
+import { IImages } from "@/shared/api/types/image.interface";
 import { IReviews } from "@/shared/types/review.interface";
-import { HYDRATE } from "next-redux-wrapper";
 import { IPerson } from "./../types/person.interface";
 
 const token = "BGGATXC-SC6M1QJ-QH36R71-HFMCSMW";

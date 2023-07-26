@@ -1,13 +1,14 @@
 import { FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import { IPaginationProps } from "../types/pagination.interface";
+import { RootState } from "@/shared/store";
+import { setPage } from "@/shared/store/slices/pagination/paginationSlice";
 
 import styles from "./styles.module.sass";
 
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 import { Button } from "../../Button";
-import { RootState } from "@/store";
-import { setPage } from "@/store/slices/pagination/paginationSlice";
 import { Skeleton } from "../../Skeleton";
 
 const Pagination: FC<IPaginationProps> = ({ totalPages }) => {

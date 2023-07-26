@@ -1,11 +1,13 @@
-import "@/styles/index.sass";
-import { useRouter } from "next/router";
-import type { AppProps } from "next/app";
-import { Inter } from "next/font/google";
-import { wrapper } from "@/store";
 import { useEffect } from "react";
 import NProgress from "nprogress";
+import { useRouter } from "next/router";
+import type { AppProps } from "next/app";
+
+import { Inter } from "next/font/google";
+import { wrapper } from "@/shared/store";
+
 import "nprogress/nprogress.css";
+import "@/styles/index.sass";
 
 const inter = Inter({ subsets: ["latin"] });
 

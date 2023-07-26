@@ -1,8 +1,10 @@
-import { useGetNewSerialsQuery } from "@/api";
-import { MovieList } from "@/components/common/MovieList";
-import { RootState } from "@/store";
-import { setSerialsListLimit } from "@/store/slices/serial/serialsSlice";
 import { useDispatch, useSelector } from "react-redux";
+
+import { useGetNewSerialsQuery } from "@/shared/api";
+import { RootState } from "@/shared/store";
+import { setSerialsListLimit } from "@/shared/store/slices/serial/serialsSlice";
+
+import { MovieList } from "@/components/common/MovieList";
 
 const NewSerials = () => {
   const dispatch = useDispatch();

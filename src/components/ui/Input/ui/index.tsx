@@ -1,9 +1,7 @@
-// * react
 import React from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { IInputProps } from "../types/input.interface";
 
-// * styles
 import styles from "./styles.module.sass";
 
 const Input: React.FC<IInputProps> = ({

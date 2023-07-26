@@ -1,8 +1,10 @@
-import { useGetNewCartoonsQuery } from "@/api";
-import { MovieList } from "@/components/common/MovieList";
-import { RootState } from "@/store";
-import { setCartoonsListLimit } from "@/store/slices/cartoons/cartoonsSlice";
 import { useDispatch, useSelector } from "react-redux";
+
+import { useGetNewCartoonsQuery } from "@/shared/api";
+import { RootState } from "@/shared/store";
+import { setCartoonsListLimit } from "@/shared/store/slices/cartoons/cartoonsSlice";
+
+import { MovieList } from "@/components/common/MovieList";
 
 const NewCartoons = () => {
   const dispatch = useDispatch();

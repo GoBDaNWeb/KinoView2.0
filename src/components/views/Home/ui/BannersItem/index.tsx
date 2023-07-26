@@ -1,10 +1,13 @@
 import { useRouter } from "next/router";
-import { useGetMovieByIdQuery, useGetMovieImageQuery } from "@/api";
 import Image from "next/image";
-import { Skeleton } from "@/components/ui/Skeleton";
-import styles from "./styles.module.sass";
+
+import { useGetMovieByIdQuery, useGetMovieImageQuery } from "@/shared/api";
 import { convertRating } from "@/shared/helpers/convertRating";
 import { ratingColor } from "@/shared/helpers/ratingColor";
+
+import styles from "./styles.module.sass";
+
+import { Skeleton } from "@/components/ui/Skeleton";
 
 const BannersItem = ({ id }: { id: string }) => {
   const router = useRouter();

@@ -1,8 +1,10 @@
-import { useGetNewAnimeQuery } from "@/api";
-import { MovieList } from "@/components/common/MovieList";
-import { RootState } from "@/store";
-import { setAnimeListLimit } from "@/store/slices/anime/animeSlice";
 import { useDispatch, useSelector } from "react-redux";
+
+import { useGetNewAnimeQuery } from "@/shared/api";
+import { RootState } from "@/shared/store";
+import { setAnimeListLimit } from "@/shared/store/slices/anime/animeSlice";
+
+import { MovieList } from "@/components/common/MovieList";
 
 const NewAnime = () => {
   const dispatch = useDispatch();

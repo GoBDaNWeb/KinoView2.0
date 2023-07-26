@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import { hadleOpenBurger } from "@/store/slices/burger/burgerSlice";
+
+import { hadleOpenBurger } from "@/shared/store/slices/burger/burgerSlice";
+import { RootState } from "@/shared/store";
 
 import styles from "./styles.module.sass";
-import { RootState } from "@/store";
 
 const Burger = () => {
   const dispatch = useDispatch();

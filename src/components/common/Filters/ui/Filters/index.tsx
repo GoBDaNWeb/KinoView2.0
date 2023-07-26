@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Controller, useForm } from "react-hook-form";
-import type { RootState } from "@/store";
 
+import type { RootState } from "@/shared/store";
 import { IFilterSubmitProps } from "../../types/filters.interface";
 import {
   setGenres,
@@ -10,7 +10,7 @@ import {
   setYear,
   setSortBy,
   setOrder,
-} from "@/store/slices/filter/filterSlice";
+} from "@/shared/store/slices/filter/filterSlice";
 
 import styles from "./styles.module.sass";
 

@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 
-import { useGetMovieByIdQuery } from "@/api";
+import { useGetMovieByIdQuery } from "@/shared/api";
 
 import styles from "./styles.module.sass";
 

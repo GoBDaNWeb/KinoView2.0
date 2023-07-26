@@ -1,9 +1,11 @@
 import { FC } from "react";
-import { IPersonProps } from "../../types/person.interface";
-import { useGetMoviesByIdQuery } from "@/api";
-
 import Image from "next/image";
+
+import { IPersonProps } from "../../types/person.interface";
+import { useGetMoviesByIdQuery } from "@/shared/api";
+
 import styles from "./styles.module.sass";
+
 import { Skeleton } from "@/components/ui/Skeleton";
 import PersonInfo from "../PersonInfo";
 import PersonFilms from "../PersonFilms";

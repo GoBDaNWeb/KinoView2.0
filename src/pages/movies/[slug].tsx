@@ -1,6 +1,8 @@
 import Head from "next/head";
-import { store, wrapper } from "@/store";
-import { getRunningQueriesThunk } from "@/api";
+
+import { wrapper } from "@/shared/store";
+import { getRunningQueriesThunk } from "@/shared/api";
+
 import { Header } from "@/components/layout/Header";
 import { Movies } from "@/components/views/Movies";
 

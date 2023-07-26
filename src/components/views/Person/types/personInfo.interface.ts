@@ -1,4 +1,4 @@
-import { IPersonSpouse } from "@/api/types/person.interface";
+import { IPersonSpouse } from "@/shared/api/types/person.interface";
 
 interface IAboutPerson {
   career:

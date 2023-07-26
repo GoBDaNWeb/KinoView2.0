@@ -1,9 +1,12 @@
-import { useGetReviewsQuery } from "@/api";
-import { Button } from "@/components/ui/Button";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import ReviewItem from "../ReviewItem";
+
+import { useGetReviewsQuery } from "@/shared/api";
+
 import styles from "./styles.module.sass";
+
+import { Button } from "@/components/ui/Button";
+import ReviewItem from "../ReviewItem";
 
 const MovieReviews = () => {
   const [limit, setLimit] = useState<number>(3);

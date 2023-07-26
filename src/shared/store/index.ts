@@ -1,6 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { movieApi } from "@/api";
 import { createWrapper } from "next-redux-wrapper";
+
+import { movieApi } from "@/shared/api";
+
 import filmReducer from "./slices/films/filmsSlice";
 import serialsReducer from "./slices/serial/serialsSlice";
 import cartoonsReducer from "./slices/cartoons/cartoonsSlice";

@@ -1,10 +1,12 @@
-import { useGetMovieByIdQuery, useGetMovieImageQuery } from "@/api";
+import { useGetMovieByIdQuery } from "@/shared/api";
 import { useRouter } from "next/router";
 import Head from "next/head";
+
+import { wrapper } from "@/shared/store";
+import { getRunningQueriesThunk } from "@/shared/api";
+
 import { Movie } from "@/components/views/Movie";
 import { Header } from "@/components/layout/Header";
-import { store, wrapper } from "@/store";
-import { getRunningQueriesThunk } from "@/api";
 import { Footer } from "@/components/layout/Footer";
 
 export const getServerSideProps = wrapper.getServerSideProps(

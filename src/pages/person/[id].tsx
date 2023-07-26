@@ -1,13 +1,12 @@
-import { useGetMovieByIdQuery, useGetMovieImageQuery } from "@/api";
 import { useRouter } from "next/router";
-import { useGetPersonByIdQuery } from "@/api";
 import Head from "next/head";
-import { Movie } from "@/components/views/Movie";
+
+import { useGetPersonByIdQuery, getRunningQueriesThunk } from "@/shared/api";
+import { wrapper } from "@/shared/store";
+
 import { Header } from "@/components/layout/Header";
-import { store, wrapper } from "@/store";
-import { getRunningQueriesThunk } from "@/api";
-import { Footer } from "@/components/layout/Footer";
 import { Person } from "@/components/views/Person";
+
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) => async () => {
     await Promise.all(store.dispatch(getRunningQueriesThunk()));

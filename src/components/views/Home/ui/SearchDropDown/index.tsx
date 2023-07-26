@@ -1,8 +1,8 @@
-import { useSelector } from "react-redux";
-import { RootState } from "@/store";
-import { useDispatch } from "react-redux";
-import { handleHiddenSearchedMovies } from "@/store/slices/search/searchSlice";
-import { useGetMoviesBySearchQuery } from "@/api";
+import { useSelector, useDispatch } from "react-redux";
+
+import { RootState } from "@/shared/store";
+import { handleHiddenSearchedMovies } from "@/shared/store/slices/search/searchSlice";
+import { useGetMoviesBySearchQuery } from "@/shared/api";
 
 import styles from "./styles.module.sass";
 

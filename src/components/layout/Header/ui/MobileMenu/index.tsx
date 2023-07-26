@@ -1,9 +1,8 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
-
 import { useSelector } from "react-redux";
-import { RootState } from "@/store";
 
+import { RootState } from "@/shared/store";
 import { urlList } from "@/shared/data/routes";
 
 import styles from "./styles.module.sass";
