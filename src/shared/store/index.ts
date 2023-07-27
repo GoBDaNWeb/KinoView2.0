@@ -9,7 +9,6 @@ import cartoonsReducer from "./slices/cartoons/cartoonsSlice";
 import animeReducer from "./slices/anime/animeSlice";
 import searchMovieReducer from "./slices/search/searchSlice";
 import filtersReducer from "./slices/filter/filterSlice";
-import paginationReducer from "./slices/pagination/paginationSlice";
 import burgerReducer from "./slices/burger/burgerSlice";
 
 export const store = () =>
@@ -21,7 +20,6 @@ export const store = () =>
       anime: animeReducer,
       searchMovie: searchMovieReducer,
       filters: filtersReducer,
-      pagination: paginationReducer,
       burger: burgerReducer,
       [movieApi.reducerPath]: movieApi.reducer,
     },

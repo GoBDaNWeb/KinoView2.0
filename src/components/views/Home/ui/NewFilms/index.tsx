@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { useGetNewFilmsQuery } from "@/shared/api";
@@ -19,15 +20,18 @@ const NewFilms = () => {
     isFetching: filmsIsFetching,
   } = useGetNewFilmsQuery(filmsLimit);
 
-  const changeFilmsLimit = (type: string) => {
-    if (type === "load") {
-      dispatch(setFilmsListLimit(filmsLimit + 10));
-    } else if (type === "clear") {
-      setTimeout(() => {
-        dispatch(setFilmsListLimit(10));
-      }, 200);
-    }
-  };
+  const changeFilmsLimit = useCallback(
+    (type: string) => {
+      if (type === "load") {
+        dispatch(setFilmsListLimit(filmsLimit + 10));
+      } else if (type === "clear") {
+        setTimeout(() => {
+          dispatch(setFilmsListLimit(10));
+        }, 200);
+      }
+    },
+    [dispatch, filmsLimit]
+  );
 
   return (
     <section className="container">

@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { useGetNewAnimeQuery } from "@/shared/api";
@@ -19,15 +20,19 @@ const NewAnime = () => {
     isFetching: animeIsFetching,
   } = useGetNewAnimeQuery(animeLimit);
 
-  const changeAnimeLimit = (type: string) => {
-    if (type === "load") {
-      dispatch(setAnimeListLimit(animeLimit + 10));
-    } else if (type === "clear") {
-      setTimeout(() => {
-        dispatch(setAnimeListLimit(10));
-      }, 200);
-    }
-  };
+  const changeAnimeLimit = useCallback(
+    (type: string) => {
+      if (type === "load") {
+        dispatch(setAnimeListLimit(animeLimit + 10));
+      } else if (type === "clear") {
+        setTimeout(() => {
+          dispatch(setAnimeListLimit(10));
+        }, 200);
+      }
+    },
+    [animeLimit, dispatch]
+  );
+
   return (
     <section className="container">
       <MovieList

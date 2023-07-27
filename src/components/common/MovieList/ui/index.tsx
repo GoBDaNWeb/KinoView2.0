@@ -1,4 +1,4 @@
-import { FC, useEffect, useState, useRef } from "react";
+import { FC, useEffect, useState, useRef, memo } from "react";
 import { IMovieListProps } from "../types/movieList.interface";
 import { MovieCard } from "@/components/common/MovieCard";
 import { Skeleton } from "@/components/ui/Skeleton";
@@ -77,4 +77,4 @@ const MovieList: FC<IMovieListProps> = ({
   );
 };
 
-export default MovieList;
+export default memo(MovieList);

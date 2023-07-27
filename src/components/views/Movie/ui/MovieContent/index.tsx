@@ -14,7 +14,7 @@ const MovieContent = () => {
     query: { id },
   } = useRouter();
 
-  const { data: movieData, isLoading, isFetching } = useGetMovieByIdQuery(id);
+  const { data: movieData, isLoading } = useGetMovieByIdQuery(id);
 
   return (
     <div className={styles.movieContent}>

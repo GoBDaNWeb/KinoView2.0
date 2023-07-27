@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { useGetNewCartoonsQuery } from "@/shared/api";
@@ -19,15 +20,18 @@ const NewCartoons = () => {
     isFetching: cartoonsIsFetching,
   } = useGetNewCartoonsQuery(cartoonsLimit);
 
-  const chasngeCartoonsLimit = (type: string) => {
-    if (type === "load") {
-      dispatch(setCartoonsListLimit(cartoonsLimit + 10));
-    } else if (type === "clear") {
-      setTimeout(() => {
-        dispatch(setCartoonsListLimit(10));
-      }, 200);
-    }
-  };
+  const chasngeCartoonsLimit = useCallback(
+    (type: string) => {
+      if (type === "load") {
+        dispatch(setCartoonsListLimit(cartoonsLimit + 10));
+      } else if (type === "clear") {
+        setTimeout(() => {
+          dispatch(setCartoonsListLimit(10));
+        }, 200);
+      }
+    },
+    [cartoonsLimit, dispatch]
+  );
 
   return (
     <section className="container">

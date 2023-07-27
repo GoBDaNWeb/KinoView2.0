@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { useGetNewSerialsQuery } from "@/shared/api";
@@ -17,19 +18,20 @@ const NewSerials = () => {
     data: serials,
     isLoading: serialsIsLoading,
     isFetching: serialsIsFetching,
-    refetch,
   } = useGetNewSerialsQuery(serialsLimit);
 
-  const changeSerialsLimit = (type: string) => {
-    if (type === "load") {
-      dispatch(setSerialsListLimit(serialsLimit + 10));
-      refetch();
-    } else if (type === "clear") {
-      setTimeout(() => {
-        dispatch(setSerialsListLimit(10));
-      }, 200);
-    }
-  };
+  const changeSerialsLimit = useCallback(
+    (type: string) => {
+      if (type === "load") {
+        dispatch(setSerialsListLimit(serialsLimit + 10));
+      } else if (type === "clear") {
+        setTimeout(() => {
+          dispatch(setSerialsListLimit(10));
+        }, 200);
+      }
+    },
+    [dispatch, serialsLimit]
+  );
 
   return (
     <section className="container">

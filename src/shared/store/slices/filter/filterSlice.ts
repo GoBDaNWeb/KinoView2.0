@@ -59,6 +59,9 @@ const filterSlice = createSlice({
     resetFilters: (state: IFilterSliceState) => {
       state.filters = initialState.filters;
     },
+    setLimit: (state: IFilterSliceState, action: PayloadAction<number>) => {
+      state.filters.limit = action.payload;
+    },
   },
 });
 
@@ -70,6 +73,7 @@ export const {
   setRating,
   setYear,
   setSearch,
+  setLimit,
 } = filterSlice.actions;
 
 export default filterSlice.reducer;

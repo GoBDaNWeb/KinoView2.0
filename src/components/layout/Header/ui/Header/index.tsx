@@ -1,14 +1,13 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { Logo } from "@/components/ui/Logo";
-import { Button } from "@/components/ui/Button";
-import { Routes } from "@/shared/constants/routes";
+
+import { urlList } from "@/shared/data/routes";
+
 import styles from "./styles.module.sass";
 
 import { Burger } from "@/components/ui/Burger";
 import MobileMenu from "../MobileMenu";
-
-import { urlList } from "@/shared/data/routes";
+import { Logo } from "@/components/ui/Logo";
 
 const Header = () => {
   const router = useRouter();

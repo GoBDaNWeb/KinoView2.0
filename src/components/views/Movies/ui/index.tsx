@@ -1,45 +1,52 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 
 import { convertMovieType } from "../helpers/convertMovieType";
 
-import { setType } from "@/shared/store/slices/filter/filterSlice";
-import { setPage } from "@/shared/store/slices/pagination/paginationSlice";
+import { setLimit, setType } from "@/shared/store/slices/filter/filterSlice";
 import { RootState } from "@/shared/store";
 import { useGetMoviesQuery } from "@/shared/api";
+import useElementIsVisible from "@/shared/hooks/useElementIsVisible";
 
 import styles from "./styles.module.sass";
 
 import { Filters } from "@/components/common/Filters";
 import { MovieCard } from "@/components/common/MovieCard";
-import { Pagination } from "@/components/ui/Pagination";
 import { Skeleton } from "@/components/ui/Skeleton";
+import { Loader } from "@/components/ui/Loader";
+import { Button } from "@/components/ui/Button";
 
 const Movies = () => {
+  const elementRef = useRef<HTMLDivElement>(null);
+  const isOnScreen = useElementIsVisible(elementRef);
   const dispatch = useDispatch();
   const { filters } = useSelector((state: RootState) => state.filters);
-  const { page } = useSelector((state: RootState) => state.pagination);
 
   const {
     query: { slug },
   } = useRouter();
 
-  useEffect(() => {
-    dispatch(setType(slug));
-    dispatch(setPage(1));
-  }, [dispatch, slug]);
-
   const { isLoading, isFetching, data } = useGetMoviesQuery({
     filters,
-    page,
   });
+
+  useEffect(() => {
+    dispatch(setType(slug));
+    dispatch(setLimit(15));
+  }, [dispatch, slug]);
+
+  useEffect(() => {
+    if (isOnScreen) {
+      dispatch(setLimit(filters.limit + 15));
+    }
+  }, [isOnScreen]);
 
   return (
     <div className={`${styles.movies} container`}>
       <h3>Найди {convertMovieType(slug)} По Вкусу</h3>
       <Filters />
-      {isLoading || isFetching ? (
+      {isLoading ? (
         <div className={styles.moviesList}>
           {[...Array(15)].map((_, index) => (
             <div key={index} className={styles.skeletonCard}>
@@ -74,7 +81,8 @@ const Movies = () => {
           ))}
         </div>
       )}
-      <Pagination totalPages={data?.pages} />
+      <div ref={elementRef}></div>
+      {isFetching ? <Loader /> : null}
     </div>
   );
 };

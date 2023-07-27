@@ -59,14 +59,14 @@ export const movieApi = createApi({
         `v1.3/movie?search=${query}&field=name&limit=10&sortField=rating.kp&sortType=-1&field=typeNumber&search=${type}&isStrict=false`,
     }),
     getMovies: builder.query<IMovies, IQuery>({
-      query: ({ filters, page }) =>
+      query: ({ filters }) =>
         `v1.3/movie?name=${filters.search}&${
           filters.genres ? `genres.name=${filters.genres}&` : ""
         }sortField=${filters.sortBy}&sortType=${filters.order}&typeNumber=${
           filters.type
         }&year=${filters.year}&rating.kp=${filters.rating}&limit=${
           filters.limit
-        }&page=${page}`,
+        }&page=1`,
     }),
     getPersonById: builder.query<IPerson, string | string[] | undefined>({
       query: (id) => `v1/person/${id}`,

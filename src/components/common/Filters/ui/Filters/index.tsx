@@ -1,5 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/router";
+import { useSearchParams } from "next/navigation";
 import { Controller, useForm } from "react-hook-form";
+import qs from "query-string";
 
 import type { RootState } from "@/shared/store";
 import { IFilterSubmitProps } from "../../types/filters.interface";
@@ -23,6 +26,9 @@ import SortBy from "../SortBy";
 import Order from "../Order";
 
 const Filters = () => {
+  const router = useRouter();
+  const params = useSearchParams();
+
   const dispatch = useDispatch();
   const filters = useSelector((state: RootState) => state.filters);
 
@@ -54,6 +60,28 @@ const Filters = () => {
       dispatch(setSearch(search));
       dispatch(setSortBy(sortBy));
       dispatch(setOrder(order));
+
+      const updatedQuery: any = {
+        order,
+        rating,
+        year,
+        genres,
+        search,
+        sortBy,
+      };
+
+      const url = qs.stringifyUrl(
+        {
+          url: router.asPath,
+          query: updatedQuery,
+        },
+        {
+          skipNull: true,
+          arrayFormatSeparator: "-",
+        }
+      );
+
+      router.push(url);
     }
   };
 
