@@ -53,7 +53,7 @@ const Carousel: FC<PropsWithChildren<ICarouselProps>> = ({
   viewQuantity,
   contentIsLoading,
 }) => {
-  const [navigation, setNavigation] = useState<any>({});
+  const [navigation, setNavigation] = useState({});
   const navigationPrevRef = useRef<HTMLButtonElement>(null);
   const navigationNextRef = useRef<HTMLButtonElement>(null);
 

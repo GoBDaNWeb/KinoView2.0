@@ -1,5 +1,3 @@
-import { ReactNode } from "react";
-
 interface Tabs {
   title: string;
   content: JSX.Element;

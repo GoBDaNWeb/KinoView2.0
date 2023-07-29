@@ -1,4 +1,3 @@
-// * react
 import React from "react";
 import Slider from "rc-slider";
 import { IRangeSlider } from "../types/rangeSlider.interface";

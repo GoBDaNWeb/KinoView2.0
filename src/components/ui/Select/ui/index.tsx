@@ -1,8 +1,6 @@
-// * react
 import React from "react";
 import { ISelectProps } from "../types/select.interface";
 
-// * styles
 import styles from "./styles.module.sass";
 
 const Select: React.FC<ISelectProps> = ({

@@ -1,4 +1,3 @@
-// * styles
 import styles from "./styles.module.sass";
 
 const Loader = () => {

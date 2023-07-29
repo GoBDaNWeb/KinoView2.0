@@ -15,7 +15,10 @@ type Fees = {
 type Premiere = {
   world: Date;
 };
-
+type Budget = {
+  value: number;
+  currency: string;
+};
 interface IAboutMovie {
   countries?: Countries[];
   fees?: Fees;
@@ -26,7 +29,7 @@ interface IAboutMovie {
   premiere?: Premiere;
   movieLength?: number;
   ageRating?: number;
-  budget?: any;
+  budget?: Budget;
 }
 
 export interface IAboutMovieProps {

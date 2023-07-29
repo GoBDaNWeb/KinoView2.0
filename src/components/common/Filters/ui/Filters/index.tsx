@@ -61,7 +61,7 @@ const Filters = () => {
       dispatch(setSortBy(sortBy));
       dispatch(setOrder(order));
 
-      const updatedQuery: any = {
+      const updatedQuery = {
         order,
         rating,
         year,

@@ -4,6 +4,8 @@ import { IInfoBlockProps } from "../types/infoBlock.interface";
 import styles from "./styles.module.sass";
 
 const InfoBlock: FC<IInfoBlockProps> = ({ infoContent }) => {
+  console.log("infoContent", infoContent);
+
   return (
     <ul className={styles.infoBlock}>
       {infoContent.map((info, index) => (
