@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import { Tab, TabList, TabPanel, Tabs as ReactTabs } from "react-tabs";
 import { ITabsProps } from "../types/tabs.interface";
 import styles from "./styles.module.sass";
@@ -28,4 +28,4 @@ const Tabs: FC<ITabsProps> = ({ tabs }) => {
   );
 };
 
-export default Tabs;
+export default memo(Tabs);

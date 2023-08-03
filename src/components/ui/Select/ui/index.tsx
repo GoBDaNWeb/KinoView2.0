@@ -1,14 +1,9 @@
-import React from "react";
+import { FC, memo } from "react";
 import { ISelectProps } from "../types/select.interface";
 
 import styles from "./styles.module.sass";
 
-const Select: React.FC<ISelectProps> = ({
-  onChange,
-  onBlur,
-  onFocus,
-  options,
-}) => {
+const Select: FC<ISelectProps> = ({ onChange, onBlur, onFocus, options }) => {
   return (
     <select
       onBlur={onBlur}
@@ -29,4 +24,4 @@ const Select: React.FC<ISelectProps> = ({
   );
 };
 
-export default Select;
+export default memo(Select);

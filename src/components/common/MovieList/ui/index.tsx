@@ -77,4 +77,4 @@ const MovieList: FC<IMovieListProps> = ({
   );
 };
 
-export default memo(MovieList);
+export default MovieList;

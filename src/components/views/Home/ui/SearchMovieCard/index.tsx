@@ -1,7 +1,9 @@
-import React from "react";
+import { FC, memo } from "react";
 import Link from "next/link";
 import Image from "next/image";
+
 import { ISearchMovieCard } from "../../types/serchMovieCard.interface";
+
 import cropText from "../../helpers/cropText";
 import { translateMovieType } from "@/shared/helpers/translateMovieType";
 import { ratingColor } from "@/shared/helpers/ratingColor";
@@ -9,7 +11,7 @@ import { convertRating } from "@/shared/helpers/convertRating";
 
 import styles from "./styles.module.sass";
 
-const SearchMovieCard: React.FC<ISearchMovieCard> = ({ movie }) => {
+const SearchMovieCard: FC<ISearchMovieCard> = ({ movie }) => {
   return (
     <Link href={`/movie/${movie.id}`}>
       <div className={styles.card}>
@@ -39,4 +41,4 @@ const SearchMovieCard: React.FC<ISearchMovieCard> = ({ movie }) => {
   );
 };
 
-export default SearchMovieCard;
+export default memo(SearchMovieCard);

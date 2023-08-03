@@ -1,6 +1,7 @@
+import { FC, useState, memo } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FC, useState } from "react";
+
 import { IMovieCardProps } from "../types/moveCard.interface";
 import { ratingColor } from "@/shared/helpers/ratingColor";
 import { translateMovieType } from "@/shared/helpers/translateMovieType";
@@ -10,31 +11,31 @@ import styles from "./styles.module.sass";
 const MovieCard: FC<IMovieCardProps> = ({ movie }) => {
   const [imageLoading, setImageLoding] = useState(true);
 
+  const { id, rating, poster, name, alternativeName, year, type } = movie;
+
   return (
-    <Link href={`/movie/${movie.id}`} className={styles.movieCard}>
+    <Link href={`/movie/${id}`} className={styles.movieCard}>
       <div
         className={`${styles.imageWrapper} ${imageLoading ? styles.blur : ""}`}
       >
         {movie?.rating?.kp ? (
-          <div className={`${styles.rating} ${ratingColor(movie?.rating?.kp)}`}>
-            {convertRating(movie?.rating?.kp)}
+          <div className={`${styles.rating} ${ratingColor(rating?.kp)}`}>
+            {convertRating(rating?.kp)}
           </div>
         ) : null}
         <Image
-          src={movie.poster ? movie.poster.previewUrl : `/image-not-found.jpg`}
+          src={poster ? poster.previewUrl : `/image-not-found.jpg`}
           alt="movie"
           fill
           sizes="100%"
-          onLoadingComplete={() => setImageLoding(false)}
+          onLoadingComplete={() => setImageLoding((prev) => !prev)}
         />
       </div>
       <div className={styles.movieCardData}>
-        <h5 className={styles.movieCardTitle}>
-          {movie?.name || movie?.alternativeName}
-        </h5>
-        {movie?.year ? (
+        <h5 className={styles.movieCardTitle}>{name || alternativeName}</h5>
+        {year ? (
           <h6 className={styles.movieCardAbout}>
-            {translateMovieType(movie?.type)}, {movie?.year}
+            {translateMovieType(type)}, {year}
           </h6>
         ) : null}
       </div>
@@ -42,4 +43,4 @@ const MovieCard: FC<IMovieCardProps> = ({ movie }) => {
   );
 };
 
-export default MovieCard;
+export default memo(MovieCard);

@@ -1,3 +1,5 @@
+@import '@/styles/variables' 
+    
 .movieSlider
     .movieSliderTop
         position: relative
@@ -15,6 +17,8 @@
             display: flex
             align-items: center
             gap: 1rem
+            @media(max-width: $tab)
+                display: none
             button
                 cursor: pointer
                 background: rgba(0,0,0,.3)

@@ -1,10 +1,10 @@
-import React from "react";
+import { FC, memo } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { IInputProps } from "../types/input.interface";
 
 import styles from "./styles.module.sass";
 
-const Input: React.FC<IInputProps> = ({
+const Input: FC<IInputProps> = ({
   onFocus,
   onBlur,
   onChange,
@@ -33,4 +33,4 @@ const Input: React.FC<IInputProps> = ({
   );
 };
 
-export default Input;
+export default memo(Input);

@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useState, memo } from "react";
 import { IPersonCardProps } from "../types/personCard.interface";
 import Image from "next/image";
 import Link from "next/link";
@@ -25,4 +25,4 @@ const PersonCard: FC<IPersonCardProps> = ({ id, name, photo }) => {
   );
 };
 
-export default PersonCard;
+export default memo(PersonCard);

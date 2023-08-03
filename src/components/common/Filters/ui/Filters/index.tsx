@@ -27,7 +27,6 @@ import Order from "../Order";
 
 const Filters = () => {
   const router = useRouter();
-  const params = useSearchParams();
 
   const dispatch = useDispatch();
   const filters = useSelector((state: RootState) => state.filters);

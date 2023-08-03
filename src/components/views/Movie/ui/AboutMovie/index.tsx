@@ -85,8 +85,6 @@ const AboutMovie: FC<IAboutMovieProps> = ({ aboutMovieData }) => {
     },
   ];
 
-  console.log("budget", budget);
-
   return (
     <div className={styles.movieAboutList}>
       <h4>

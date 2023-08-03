@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 import { Swiper } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -63,11 +65,13 @@ const Carousel: FC<PropsWithChildren<ICarouselProps>> = ({
   // };
 
   useEffect(() => {
-    setNavigation({
-      prevEl: navigationPrevRef.current,
-      nextEl: navigationNextRef.current,
-    });
-  }, []);
+    if (!contentIsLoading) {
+      setNavigation({
+        prevEl: navigationPrevRef.current,
+        nextEl: navigationNextRef.current,
+      });
+    }
+  }, [contentIsLoading]);
 
   return (
     <div className={styles.movieSlider}>
@@ -111,4 +115,4 @@ const Carousel: FC<PropsWithChildren<ICarouselProps>> = ({
   );
 };
 
-export default Carousel;
+export default memo(Carousel);

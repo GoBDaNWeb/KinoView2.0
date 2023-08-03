@@ -1,9 +1,9 @@
-import React from "react";
+import { FC, memo } from "react";
 import Slider from "rc-slider";
 import { IRangeSlider } from "../types/rangeSlider.interface";
 import "rc-slider/assets/index.css";
 
-const RangeSlider: React.FC<IRangeSlider> = ({
+const RangeSlider: FC<IRangeSlider> = ({
   min,
   max,
   step,
@@ -26,4 +26,4 @@ const RangeSlider: React.FC<IRangeSlider> = ({
   );
 };
 
-export default RangeSlider;
+export default memo(RangeSlider);
