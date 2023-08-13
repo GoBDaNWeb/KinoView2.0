@@ -6,8 +6,6 @@ import { wrapper } from "@/shared/store";
 import { getRunningQueriesThunk } from "@/shared/api";
 
 import { Movie } from "@/components/views/Movie";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
 
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) => async () => {

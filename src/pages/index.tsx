@@ -4,8 +4,6 @@ import { wrapper } from "@/shared/store";
 import { getRunningQueriesThunk } from "@/shared/api";
 
 import { Home } from "@/components/views/Home";
-import { Footer } from "@/components/layout/Footer";
-import { Header } from "@/components/layout/Header";
 
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) => async () => {

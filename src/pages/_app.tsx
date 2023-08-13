@@ -8,8 +8,7 @@ import { wrapper } from "@/shared/store";
 
 import "nprogress/nprogress.css";
 import "@/styles/index.sass";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
+import { withLayout } from "@/shared/providers/withLayout";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -36,13 +35,9 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   return (
     <div className={inter.className}>
-      <Header />
-      <main>
-        <Component {...pageProps} />
-      </main>
-      <Footer />
+      <Component {...pageProps} />
     </div>
   );
 };
 
-export default wrapper.withRedux(App);
+export default wrapper.withRedux(withLayout(App));

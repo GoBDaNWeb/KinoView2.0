@@ -4,7 +4,6 @@ import Head from "next/head";
 import { useGetPersonByIdQuery, getRunningQueriesThunk } from "@/shared/api";
 import { wrapper } from "@/shared/store";
 
-import { Header } from "@/components/layout/Header";
 import { Person } from "@/components/views/Person";
 
 export const getServerSideProps = wrapper.getServerSideProps(
