@@ -8,7 +8,7 @@ import { wrapper } from "@/shared/store";
 
 import "nprogress/nprogress.css";
 import "@/styles/index.sass";
-import { withLayout } from "@/shared/providers/withLayout";
+import { withLayout } from "@/shared/providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
