@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import { useState } from "react";
 import Image from "next/image";
 
 import { useGetMovieByIdQuery, useGetMovieImageQuery } from "@/shared/api";
@@ -10,6 +11,8 @@ import styles from "./styles.module.sass";
 import { Skeleton } from "@/components/ui/Skeleton";
 
 const BannersItem = ({ id }: { id: string }) => {
+  const [imageLoading, setImageLoding] = useState(true);
+
   const router = useRouter();
 
   const { data: movie } = useGetMovieByIdQuery(id);
@@ -30,12 +33,17 @@ const BannersItem = ({ id }: { id: string }) => {
           }}
         />
       ) : (
-        <div className={styles.imageWrapper}>
+        <div
+          className={`${styles.imageWrapper} ${
+            imageLoading ? styles.blur : ""
+          }`}
+        >
           <Image
             src={movie?.backdrop.url ? movie?.backdrop.url : image.docs[0].url}
             alt="movie"
             fill
             sizes="100%"
+            onLoadingComplete={() => setImageLoding(false)}
           />
           <div className={styles.imageWrapperContent}>
             <div className={styles.contentTop}>

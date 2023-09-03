@@ -1,4 +1,8 @@
-import { useGetMovieByIdQuery } from "@/shared/api";
+import {
+  getMovieById,
+  useGetMovieByIdQuery,
+  useGetMoviesByIdQuery,
+} from "@/shared/api";
 import { useRouter } from "next/router";
 import Head from "next/head";
 
@@ -8,7 +12,9 @@ import { getRunningQueriesThunk } from "@/shared/api";
 import { Movie } from "@/components/views/Movie";
 
 export const getServerSideProps = wrapper.getServerSideProps(
-  (store) => async () => {
+  (store) => async (context) => {
+    const id = context.params?.id;
+    store.dispatch(getMovieById.initiate(id));
     await Promise.all(store.dispatch(getRunningQueriesThunk()));
 
     return {

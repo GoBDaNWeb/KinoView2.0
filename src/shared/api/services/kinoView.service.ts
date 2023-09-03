@@ -95,3 +95,5 @@ export const {
   useGetMoviesByIdQuery,
   util: { getRunningQueriesThunk },
 } = movieApi;
+
+export const { getMovieById } = movieApi.endpoints;
