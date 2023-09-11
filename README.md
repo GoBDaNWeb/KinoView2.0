@@ -25,38 +25,31 @@ pnpm dev
 ---------------------------
 ### Архитектура приложения
 ###### за основу взята архитектура <a href="https://feature-sliced.design/ru/docs/get-started/overview">FSD</a>
+```
+src
+└────
+    ├── components
+    │   ├── common
+    │   │   └─ UserCard
+    │   │      ├─ __test__(optional)
+    │   │      ├─ helpers(optional)
+    │   │      ├─ types(optional)
+    │   │      ├─ ui
+    │	│      ├─ index.ts
+    │   ├── layout
+    │   ├── ui
+    │   └── views
+    ├──	pages
+    ├──	shared
+    │   ├── api(optional)
+    │   ├── types(optional)
+    │   ├── data(optional)
+    │   ├── helpers(optional)
+    │   ├── hooks(optional)
+    │   └── store(optional)
+    └── styles
+```
 
-- src
-	- components
-		- common
-			- UserCard
-				- helpers(optional)
-				- types(optional)
-				- ui
-				- index.ts
-		- layout
-		- ui
-			- Button
-				- ui
-				- index.ts
-		- views
-			- Home
-				- ui
-					- Home(компонент самой страницы)
-					- Hero(компонент который используется в Home)
-				- index.ts
-			- Profile
-	- pages
-	- shared
-		- api(optional)
-		- types(optional)
-		- data(optional)
-		- helpers(optional)
-		- hooks(optional)
-		- store(optional)
-	- styles
-
------
 ## Components
 Папка *components* содержит в себе 4 папки
 1. common - содержит переиспользуемые компоненты(не ui), которые вcтречаются 2 или более раз в проекте, к примеру UserCard, котоырй можно использовать на странице Profile и на странице ProfileFeed
@@ -75,13 +68,14 @@ pnpm dev
 
 ------------
 №1
-
-- Button
-	- ui
-		- styles.module.sass
-		- index.tsx
-	- index.ts
-
+```
+Button
+ └────
+      ├── ui
+      │   ├── styles.module.sass
+      │   └── index.tsx
+      └── index.ts
+```
 ------------
 
 
@@ -89,17 +83,18 @@ pnpm dev
 
 ------------
 №2
-
-- Home
-	- ui
-		- Home
-			- styles.module.sass
-			- index.tsx
-		- Hero 
-			- styles.module.sass
-			- index.tsx
-	- index.ts
-
+```
+HomePage
+ └────
+      ├── ui
+      │    ├── Home
+      │    │     ├── styles.module.sass
+      │    │     └── index.tsx
+      │    └── Hero 
+      │           ├── styles.module.sass
+      │           └── index.tsx
+      └── index.ts
+```
 ------------
 При №2 в файле index.ts мы получим такую строчку
 `export {default as Home} from './ui/Home`
