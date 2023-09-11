@@ -9,26 +9,21 @@ import { convertRating } from "@/shared/helpers/convertRating";
 import styles from "./styles.module.sass";
 
 const MovieCard: FC<IMovieCardProps> = ({ movie }) => {
-  const [imageLoading, setImageLoding] = useState(true);
-
   const { id, rating, poster, name, alternativeName, year, type } = movie;
 
   return (
     <Link href={`/movie/${id}`} className={styles.movieCard}>
-      <div
-        className={`${styles.imageWrapper} ${imageLoading ? styles.blur : ""}`}
-      >
+      <div className={`${styles.imageWrapper} `}>
         {movie?.rating?.kp ? (
           <div className={`${styles.rating} ${ratingColor(rating?.kp)}`}>
             {convertRating(rating?.kp)}
           </div>
         ) : null}
         <Image
-          src={poster ? poster.previewUrl : `/image-not-found.jpg`}
+          src={poster?.previewUrl ? poster.previewUrl : `/image-not-found.jpg`}
           alt="movie"
           fill
           sizes="100%"
-          onLoadingComplete={() => setImageLoding((prev) => !prev)}
         />
       </div>
       <div className={styles.movieCardData}>

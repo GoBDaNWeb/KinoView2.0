@@ -45,6 +45,7 @@ const MovieList: FC<IMovieListProps> = ({
                   height: "auto",
                   paddingBottom: "140%",
                   width: "100%",
+                  borderRadius: "1rem",
                 }}
                 key={index}
               />

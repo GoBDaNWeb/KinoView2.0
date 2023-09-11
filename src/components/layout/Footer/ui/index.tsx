@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className={`${styles.footer} container`}>
       <Logo />
       <a
-        href="https://portfolio-pi-five-10.vercel.app/"
+        href="https://portfolio-bogdan.vercel.app"
         target="_blank"
         className={styles.copyRight}
       >

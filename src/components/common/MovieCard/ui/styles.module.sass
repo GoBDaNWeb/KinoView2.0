@@ -1,15 +1,19 @@
 @import '@/styles/variables'
+@import '@/styles/animations'
 
 .movieCard
     transition: transform $transition
-    .imageWrapper.blur
-        filter: blur(10px)
     .imageWrapper
         overflow: hidden
         border-radius: 1rem
         height: auto
         width: 100%
-        background: gray
+        background: linear-gradient(274deg, #cfd2d1, #565656)
+        background-size: 400% 400%
+        -webkit-animation: SkeletonAnimate 3s ease infinite
+        -moz-animation: SkeletonAnimate 3s ease infinite
+        -o-animation: SkeletonAnimate 3s ease infinite
+        animation: SkeletonAnimate 3s ease infinite
         position: relative
         overflow: hidden
         padding-bottom: 140%

@@ -1,16 +1,19 @@
 @import '@/styles/variables'
+@import '@/styles/animations'
     
 .personCard
-    .imageWrapper.blur
-        filter: blur(20px)
     .imageWrapper
         transition: all $transition
-        // height: auto
         border-radius: 1rem
-        background: gray
         position: relative
         overflow: hidden
         aspect-ratio: .7
+        background: linear-gradient(274deg, #cfd2d1, #565656)
+        background-size: 400% 400%
+        -webkit-animation: SkeletonAnimate 3s ease infinite
+        -moz-animation: SkeletonAnimate 3s ease infinite
+        -o-animation: SkeletonAnimate 3s ease infinite
+        animation: SkeletonAnimate 3s ease infinite
         img
             transition: all $transition
             position: absolute
